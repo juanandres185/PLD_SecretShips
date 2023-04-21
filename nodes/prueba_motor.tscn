@@ -99,6 +99,7 @@ func _process(delta):
 
 func _pressed():
 	print(motor.boom())
+	motor.numeroSecreto = [0,1,2,3]
 "
 
 [node name="PruebaMotor" type="Node2D"]

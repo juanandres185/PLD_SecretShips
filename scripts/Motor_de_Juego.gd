@@ -3,14 +3,20 @@ extends Node2D
 var num_digits = 4
 var mod = 10
 
-var numeroSecreto = [4, 5, 6, 7]
-var numeroActual = [0, 1, 2, 3]
+var numeroSecreto = [0,0,0,0]
+var numeroActual = [0,0,0,0]
 
 var pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pos = 0
+	numeroActual = []
+	numeroSecreto = []
+	for i in range(num_digits):
+		numeroActual+=[0]
+		numeroSecreto+=[-1]
+		
 
 
 func digit_up():
@@ -18,7 +24,7 @@ func digit_up():
 	return numeroActual
 	
 func digit_down():
-	numeroActual[pos] = (numeroActual[pos]-1) % mod	
+	numeroActual[pos] = (numeroActual[pos]-1+mod) % mod	
 	return numeroActual
 	
 func next_digit():
@@ -43,8 +49,5 @@ func boom():
 				if digit == numeroActual[i]:
 					num_tocados+=1
 		
-	return [num_tocados, num_hundidos]
-		
-		
-	
+	return [num_tocados, num_hundidos]	
 
