@@ -3,7 +3,7 @@ extends Node2D
 var num_digits = 4
 var mod = 10
 
-var numeroSecreto = [0, 1, 2, 3]
+var numeroSecreto = [4, 5, 6, 7]
 var numeroActual = [0, 1, 2, 3]
 
 var pos
@@ -15,11 +15,11 @@ func _ready():
 
 func digit_up():
 	numeroActual[pos] = (numeroActual[pos]+1) % mod
-	return numeroActual[pos]
+	return numeroActual
 	
 func digit_down():
 	numeroActual[pos] = (numeroActual[pos]-1) % mod	
-	return numeroActual[pos]
+	return numeroActual
 	
 func next_digit():
 	if pos < num_digits -1 :
@@ -47,3 +47,4 @@ func boom():
 		
 		
 	
+
