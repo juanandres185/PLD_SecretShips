@@ -1,0 +1,159 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4l6f5khc0tqo"]
+
+[ext_resource type="Script" path="res://nodes/main_menu.gd" id="1_r15oa"]
+[ext_resource type="Texture2D" uid="uid://bwu5ftfmp44wq" path="res://sprites/MainMenu/BackgroundBeach.png" id="1_yq885"]
+[ext_resource type="Texture2D" uid="uid://cn6ljxhgx2iou" path="res://sprites/MainMenu/SinglePlayer.png" id="2_auwm8"]
+[ext_resource type="Texture2D" uid="uid://cfgonf0skacxm" path="res://sprites/MainMenu/Multiplayer.png" id="3_6mpq4"]
+[ext_resource type="Texture2D" uid="uid://dlxqrv4c1xy7g" path="res://sprites/MainMenu/Config.png" id="3_ras2k"]
+[ext_resource type="Script" path="res://nodes/MainMenu.gd" id="3_txnhd"]
+[ext_resource type="Texture2D" uid="uid://bsfhood2a2far" path="res://sprites/MainMenu/Exit.png" id="4_2rmmr"]
+[ext_resource type="Texture2D" uid="uid://fq7lnqkks6it" path="res://sprites/MainMenu/Title.png" id="5_2sl3g"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r15oa")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yq885")
+expand_mode = 1
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_txnhd")
+
+[node name="Node2D" type="Node2D" parent="MainMenu"]
+
+[node name="Singleplayer" type="Sprite2D" parent="MainMenu/Node2D"]
+position = Vector2(960, 576)
+scale = Vector2(1.70667, 1.70667)
+texture = ExtResource("2_auwm8")
+
+[node name="Multiplayer" type="Sprite2D" parent="MainMenu/Node2D"]
+position = Vector2(1632, 576)
+scale = Vector2(1.70667, 1.70667)
+texture = ExtResource("3_6mpq4")
+
+[node name="Config" type="Sprite2D" parent="MainMenu/Node2D"]
+position = Vector2(280, 576)
+scale = Vector2(1.70333, 1.70333)
+texture = ExtResource("3_ras2k")
+
+[node name="Exit" type="Sprite2D" parent="MainMenu/Node2D"]
+position = Vector2(2304, 576)
+scale = Vector2(1.70333, 1.70333)
+texture = ExtResource("4_2rmmr")
+
+[node name="Title" type="Sprite2D" parent="MainMenu/Node2D"]
+position = Vector2(960, 148)
+scale = Vector2(1.22371, 1.21739)
+texture = ExtResource("5_2sl3g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/Node2D"]
+root_node = NodePath("../../..")
+
+[node name="OptionsMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1080.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="OptionsMenu"]
+
+[node name="General" type="Sprite2D" parent="OptionsMenu/Node2D"]
+position = Vector2(960, 576)
+scale = Vector2(1.70667, 1.70667)
+texture = ExtResource("2_auwm8")
+
+[node name="Sounds" type="Sprite2D" parent="OptionsMenu/Node2D"]
+position = Vector2(1632, 576)
+scale = Vector2(1.70667, 1.70667)
+texture = ExtResource("3_6mpq4")
+
+[node name="Music" type="Sprite2D" parent="OptionsMenu/Node2D"]
+position = Vector2(280, 576)
+scale = Vector2(1.70333, 1.70333)
+texture = ExtResource("3_ras2k")
+
+[node name="Return" type="Sprite2D" parent="OptionsMenu/Node2D"]
+position = Vector2(2304, 576)
+scale = Vector2(1.70333, 1.70333)
+texture = ExtResource("4_2rmmr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OptionsMenu/Node2D"]
+root_node = NodePath("../../..")
+
+[node name="Title" type="Sprite2D" parent="OptionsMenu/Node2D"]
+position = Vector2(960, 137.399)
+scale = Vector2(0.853333, 0.864006)
+texture = ExtResource("3_ras2k")
+
+[node name="PlayMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1080.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectOption" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(576, 576)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -252.0
+offset_right = 288.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GoLeft" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(576, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 576.0
+grow_vertical = 2
+
+[node name="GoRight" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(576, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[connection signal="pressed" from="SelectOption" to="." method="_on_select_option_pressed"]
+[connection signal="pressed" from="GoLeft" to="." method="_on_go_left_pressed"]
+[connection signal="pressed" from="GoRight" to="." method="_on_go_right_pressed"]
