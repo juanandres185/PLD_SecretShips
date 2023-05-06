@@ -29,8 +29,7 @@ func _ready():
 
 func move_to_next_menu(next_menu_id: String):
 	var next_menu = get_menu_from_menu_id(next_menu_id)
-	#current_menu.global_position = Vector2(0,-menu_origin_size.y)
-	tween.tween_property(current_menu,"transition",Vector2(0,-menu_origin_size.y),3.0)
+	current_menu.global_position = Vector2(0,-menu_origin_size.y)
 	next_menu.global_position = menu_origin_position
 	
 	
@@ -70,6 +69,14 @@ func _on_select_option_pressed():
 			move_to_next_menu("options_menu")
 		"main_exit":
 			get_tree().quit()
+		"options_general":
+			print("WIP")
+		"options_sounds":
+			print("WIP")
+		"options_music":
+			print("WIP")
+		"return":
+			move_to_previous_menu()
 		_:
 			print(selected)
 

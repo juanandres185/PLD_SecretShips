@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4l6f5khc0tqo"]
+[gd_scene load_steps=10 format=3 uid="uid://b4l6f5khc0tqo"]
 
 [ext_resource type="Script" path="res://nodes/main_menu.gd" id="1_r15oa"]
 [ext_resource type="Texture2D" uid="uid://bwu5ftfmp44wq" path="res://sprites/MainMenu/BackgroundBeach.png" id="1_yq885"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://nodes/MainMenu.gd" id="3_txnhd"]
 [ext_resource type="Texture2D" uid="uid://bsfhood2a2far" path="res://sprites/MainMenu/Exit.png" id="4_2rmmr"]
 [ext_resource type="Texture2D" uid="uid://fq7lnqkks6it" path="res://sprites/MainMenu/Title.png" id="5_2sl3g"]
+[ext_resource type="Script" path="res://nodes/OptionsMenu.gd" id="9_bakp8"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -76,6 +77,7 @@ offset_top = 1080.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("9_bakp8")
 
 [node name="Node2D" type="Node2D" parent="OptionsMenu"]
 
@@ -99,13 +101,13 @@ position = Vector2(2304, 576)
 scale = Vector2(1.70333, 1.70333)
 texture = ExtResource("4_2rmmr")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="OptionsMenu/Node2D"]
-root_node = NodePath("../../..")
-
 [node name="Title" type="Sprite2D" parent="OptionsMenu/Node2D"]
 position = Vector2(960, 137.399)
 scale = Vector2(0.853333, 0.864006)
 texture = ExtResource("3_ras2k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OptionsMenu/Node2D"]
+root_node = NodePath("../../..")
 
 [node name="PlayMenu" type="Control" parent="."]
 layout_mode = 1
