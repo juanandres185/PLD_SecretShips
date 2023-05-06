@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnjheng7xw6u2"]
+
+[ext_resource type="PackedScene" uid="uid://cl060oe47pb3g" path="res://nodes/Player.tscn" id="1_fss41"]
+
+[sub_resource type="GDScript" id="GDScript_cpfr4"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+	
+func on_up_pressed():
+	player1.up()
+
+"
+
+[node name="Partida_Ejemplo" type="Node2D"]
+script = SubResource("GDScript_cpfr4")
+
+[node name="Player1" parent="." instance=ExtResource("1_fss41")]
+position = Vector2(37, 14)
+
+[node name="Player2" parent="." instance=ExtResource("1_fss41")]
+position = Vector2(712, 6)

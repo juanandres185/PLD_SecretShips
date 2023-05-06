@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://p01wvbaeefeh"]
+
+[ext_resource type="Script" path="res://scripts/disparo.gd" id="1_uc1gl"]
+
+[node name="disparo" type="Node2D"]
+script = ExtResource("1_uc1gl")
+
+[node name="title_hundidos" type="Label" parent="."]
+offset_left = 150.0
+offset_top = 1.0
+offset_right = 190.0
+offset_bottom = 27.0
+text = "H:"
+
+[node name="title_tocados" type="Label" parent="."]
+offset_left = 91.0
+offset_right = 131.0
+offset_bottom = 26.0
+text = "T:"
+
+[node name="tocados" type="Label" parent="."]
+offset_left = 108.0
+offset_top = 1.0
+offset_right = 148.0
+offset_bottom = 24.0
+
+[node name="hundidos" type="Label" parent="."]
+offset_left = 172.0
+offset_top = 1.0
+offset_right = 212.0
+offset_bottom = 24.0
+
+[node name="disparo" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 41.0
+offset_bottom = 24.0

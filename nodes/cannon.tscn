@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq54g8d2r5rop"]
+
+[ext_resource type="Script" path="res://scripts/cannon.gd" id="1_ijdv1"]
+
+[node name="Cannon" type="Node2D"]
+script = ExtResource("1_ijdv1")
+
+[node name="digit_up" type="Button" parent="."]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 71.0
+offset_bottom = 30.0
+text = "digit_up"
+
+[node name="digit_down" type="Button" parent="."]
+offset_top = 84.0
+offset_right = 92.0
+offset_bottom = 115.0
+text = "digit_down"
+
+[node name="text" type="RichTextLabel" parent="."]
+offset_left = 18.0
+offset_top = 37.0
+offset_right = 58.0
+offset_bottom = 77.0
+text = "Hola"
+
+[connection signal="pressed" from="digit_up" to="." method="_on_digit_up_pressed"]
+[connection signal="pressed" from="digit_down" to="." method="_on_digit_down_pressed"]
