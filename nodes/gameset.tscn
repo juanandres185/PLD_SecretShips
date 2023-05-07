@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://so3fidvdiii2"]
+
+[ext_resource type="Texture2D" uid="uid://cir1t4sablbap" path="res://sprites/Gameset/BackgroundSea.jpg" id="1_wdgwm"]
+[ext_resource type="Texture2D" uid="uid://r3a6jq5dyv2a" path="res://sprites/Gameset/PirateShip.png" id="2_4kth5"]
+[ext_resource type="Texture2D" uid="uid://d1u7yv05lmesk" path="res://sprites/Gameset/MainDeck.png" id="3_4c8e2"]
+[ext_resource type="Texture2D" uid="uid://c3wlquhtwl2py" path="res://sprites/Gameset/Cannon.png" id="4_fkgfn"]
+
+[node name="Gameset" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wdgwm")
+expand_mode = 1
+
+[node name="EnemyShip" type="Node2D" parent="."]
+
+[node name="EnemyShip" type="Sprite2D" parent="EnemyShip"]
+position = Vector2(992, -120)
+scale = Vector2(1.89483, 1.3638)
+texture = ExtResource("2_4kth5")
+
+[node name="MainShip" type="Node2D" parent="."]
+
+[node name="MainDeck" type="Sprite2D" parent="MainShip"]
+position = Vector2(960, 833.75)
+scale = Vector2(1.3913, 1.00716)
+texture = ExtResource("3_4c8e2")
+
+[node name="MainShip" type="Node2D" parent="MainShip"]
+position = Vector2(112, -8)
+metadata/_edit_group_ = true
+
+[node name="Cannon1" type="Sprite2D" parent="MainShip/MainShip"]
+position = Vector2(512, 856)
+texture = ExtResource("4_fkgfn")
+
+[node name="Cannon4" type="Sprite2D" parent="MainShip/MainShip"]
+position = Vector2(1151, 856)
+texture = ExtResource("4_fkgfn")
+
+[node name="Cannon3" type="Sprite2D" parent="MainShip/MainShip"]
+position = Vector2(936, 856)
+texture = ExtResource("4_fkgfn")
+
+[node name="Cannon2" type="Sprite2D" parent="MainShip/MainShip"]
+position = Vector2(721, 856)
+texture = ExtResource("4_fkgfn")

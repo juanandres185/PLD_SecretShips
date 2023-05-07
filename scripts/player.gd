@@ -38,6 +38,7 @@ func digit_down():
 	numeroActual[pos] = (numeroActual[pos]-1+mod) % mod	
 	return numeroActual
 	
+#En esta función se requiere una variable pos llamada igual que la variable global pos.
 func up(pos):
 	numeroActual[pos] = (numeroActual[pos]+1) % mod
 	return numeroActual[pos]

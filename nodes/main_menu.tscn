@@ -101,6 +101,18 @@ position = Vector2(2304, 576)
 scale = Vector2(1.70333, 1.70333)
 texture = ExtResource("4_2rmmr")
 
+[node name="Resolution" type="Sprite2D" parent="OptionsMenu/Node2D"]
+visible = false
+position = Vector2(960, 576)
+scale = Vector2(1.70667, 1.70667)
+texture = ExtResource("2_auwm8")
+
+[node name="FullScreen" type="Sprite2D" parent="OptionsMenu/Node2D"]
+visible = false
+position = Vector2(960, 576)
+scale = Vector2(1.70667, 1.70667)
+texture = ExtResource("2_auwm8")
+
 [node name="Title" type="Sprite2D" parent="OptionsMenu/Node2D"]
 position = Vector2(960, 137.399)
 scale = Vector2(0.853333, 0.864006)
@@ -118,6 +130,31 @@ offset_top = -1080.0
 offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="PlayMenu"]
+
+[node name="Points" type="Sprite2D" parent="PlayMenu/Node2D"]
+position = Vector2(960, 576)
+scale = Vector2(1.70667, 1.70667)
+texture = ExtResource("2_auwm8")
+
+[node name="Turns" type="Sprite2D" parent="PlayMenu/Node2D"]
+position = Vector2(960, 576)
+scale = Vector2(1.70667, 1.70667)
+texture = ExtResource("2_auwm8")
+
+[node name="Time" type="Sprite2D" parent="PlayMenu/Node2D"]
+position = Vector2(960, 576)
+scale = Vector2(1.70667, 1.70667)
+texture = ExtResource("2_auwm8")
+
+[node name="Title" type="Sprite2D" parent="PlayMenu/Node2D"]
+position = Vector2(960, 137.399)
+scale = Vector2(0.853333, 0.864006)
+texture = ExtResource("3_ras2k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayMenu/Node2D"]
+root_node = NodePath("../../..")
 
 [node name="SelectOption" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)

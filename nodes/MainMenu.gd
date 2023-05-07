@@ -44,7 +44,7 @@ func go_right():
 	menu_arange[(selected+1)%len(menu_arange)].position = pos_2
 	
 	menu_arange[(selected)%len(menu_arange)].scale = Vector2(0.75,0.75)
-	menu_arange[(selected+1)%len(menu_arange)].scale = Vector2(1.25,1.25)
+	menu_arange[(selected+1)%len(menu_arange)].scale = Vector2(1.71,1.71)
 	
 	selected = (selected + 1) %(len(menu_arange))
 	
@@ -56,7 +56,7 @@ func go_left():
 	menu_arange[(selected+1)%len(menu_arange)].position = pos_4
 	
 	menu_arange[(selected)%len(menu_arange)].scale = Vector2(0.75,0.75)
-	menu_arange[(selected-1)%len(menu_arange)].scale = Vector2(1.25,1.25)
+	menu_arange[(selected-1)%len(menu_arange)].scale = Vector2(1.71,1.71)
 	
 	selected = (selected - 1 +4)%(len(menu_arange))
 	
