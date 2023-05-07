@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnjheng7xw6u2"]
 
-[ext_resource type="PackedScene" uid="uid://cl060oe47pb3g" path="res://nodes/Player.tscn" id="1_fss41"]
+[ext_resource type="PackedScene" uid="uid://b84t7ayu1w7vs" path="res://nodes/Player.tscn" id="1_fss41"]
 
 [sub_resource type="GDScript" id="GDScript_cpfr4"]
 script/source = "extends Node2D
@@ -8,16 +8,18 @@ script/source = "extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	print($Player1.tecla_up)
+	$Player1.tecla_up = KEY_W
+	$Player1.tecla_down = KEY_S
+	$Player1.tecla_right = KEY_D
+	$Player1.tecla_left = KEY_A
+	$Player1.tecla_boom = KEY_SPACE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
-	
-func on_up_pressed():
-	player1.up()
+
 
 "
 

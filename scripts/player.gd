@@ -13,14 +13,19 @@ var numeroActual = [0,0,0,0]
 
 var pos
 
-var tecla_up = KEY_UP
-var tecla_down = KEY_DOWN
-var tecla_right = KEY_RIGHT
-var tecla_left = KEY_LEFT
-var tecla_boom = KEY_ENTER
+var tecla_up
+var tecla_down
+var tecla_right
+var tecla_left
+var tecla_boom
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	tecla_up = KEY_UP
+	tecla_down = KEY_DOWN
+	tecla_right = KEY_RIGHT
+	tecla_left = KEY_LEFT
+	tecla_boom = KEY_ENTER
 	pos = 0
 	numeroActual = []
 	numeroSecreto = []
@@ -76,12 +81,12 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == tecla_up:
 			for cannon in get_tree().get_nodes_in_group("cannons"):
-				if cannon.num == pos:
+				if cannon.num == pos and cannon.get_parent() == self:
 					cannon._on_digit_up_pressed()
 
 		if event.keycode == tecla_down:		
 			for cannon in get_tree().get_nodes_in_group("cannons"):
-				if cannon.num == pos:
+				if cannon.num == pos and cannon.get_parent() == self:
 					cannon._on_digit_down_pressed()
 
 		if event.keycode == tecla_right:
