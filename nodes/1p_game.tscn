@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://daitm0va0bavs"]
+
+[ext_resource type="PackedScene" uid="uid://b84t7ayu1w7vs" path="res://nodes/Player.tscn" id="1_ya5ec"]
+
+[sub_resource type="GDScript" id="GDScript_6xuy8"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var num = []
+	for i in range(Global.num_digits):
+		num.append(randi_range(0,Global.mod-1))
+		
+	$Player.numeroSecreto = num
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="1p_game" type="Node2D"]
+script = SubResource("GDScript_6xuy8")
+
+[node name="Player" parent="." instance=ExtResource("1_ya5ec")]

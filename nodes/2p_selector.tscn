@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwgxy7o3807r4"]
+
+[ext_resource type="PackedScene" uid="uid://cxs6d80olo5af" path="res://nodes/secret_number_selector.tscn" id="1_kwefy"]
+
+[sub_resource type="GDScript" id="GDScript_vljw6"]
+script/source = "extends Node2D
+
+var p1_number
+var p2_number
+
+var tecla_next = KEY_ENTER
+var tecla_next2 = KEY_SPACE
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$p1_selector.tecla_up = KEY_W
+	$p1_selector.tecla_down = KEY_S
+	$p1_selector.tecla_right = KEY_D
+	$p1_selector.tecla_left = KEY_A
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+	
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == tecla_next or event.keycode == tecla_next2:
+			if $p1_selector.visible:
+				p1_number = $p1_selector.numeroActual
+				$p1_selector.visible = false
+				$p2_selector.visible = true
+			
+			else : 
+				if $p2_selector.visible:
+					p2_number = $p2_selector.numeroActual
+					start_game(p1_number, p2_number)
+				
+func start_game(p1_number, p2_number):
+	Global.p2_number = p1_number
+	Global.p1_number = p2_number
+
+	get_tree().change_scene_to_file(\"res://nodes/2p_game.tscn\")
+	
+"
+
+[node name="2p_selector" type="Node2D"]
+script = SubResource("GDScript_vljw6")
+
+[node name="p1_selector" parent="." instance=ExtResource("1_kwefy")]
+
+[node name="p2_selector" parent="." instance=ExtResource("1_kwefy")]
+visible = false
+position = Vector2(561, 5)

@@ -14,16 +14,12 @@ func _ready():
 	$Player1.tecla_right = KEY_D
 	$Player1.tecla_left = KEY_A
 	$Player1.tecla_boom = KEY_SPACE
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
-
-
+	$Player1.numeroSecreto = Global.p1_number
+	$Player2.numeroSecreto = Global.p2_number
 "
 
-[node name="Partida_Ejemplo" type="Node2D"]
+[node name="2p_game" type="Node2D"]
 script = SubResource("GDScript_cpfr4")
 
 [node name="Player1" parent="." instance=ExtResource("1_fss41")]

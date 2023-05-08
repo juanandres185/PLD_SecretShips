@@ -1,12 +1,11 @@
 extends Node2D
 
 var disparo = preload("res://nodes/disparo.tscn")
-var pos_disparo = Vector2(20,170)
+var pos_disparo = Vector2(20,220)
 
 var num_canons = 0
 
-var num_digits = 4
-var mod = 10
+var separador = 100
 
 var numeroSecreto = [1,2,3,4]
 var numeroActual = [0,0,0,0]
@@ -28,45 +27,50 @@ func _ready():
 	tecla_boom = KEY_ENTER
 	pos = 0
 	numeroActual = []
-	numeroSecreto = []
-	for i in range(num_digits):
+	numeroSecreto=Global.p1_number
+	
+	for i in range(Global.num_digits):
 		numeroActual+=[0]
-		numeroSecreto+=[i]
 		
-
+		var cannon = preload("res://nodes/cannon.tscn").instantiate()
+		add_child(cannon)
+		cannon.add_to_group("cannons")
+		cannon.position.x = i*separador
 
 func digit_up():
-	numeroActual[pos] = (numeroActual[pos]+1) % mod
+	numeroActual[pos] = (numeroActual[pos]+1) % Global.mod
 	return numeroActual
 	
 func digit_down():
-	numeroActual[pos] = (numeroActual[pos]-1+mod) % mod	
+	numeroActual[pos] = (numeroActual[pos]-1+Global.mod) % Global.mod	
 	return numeroActual
 	
 #En esta función se requiere una variable pos llamada igual que la variable global pos.
 func up(pos):
-	numeroActual[pos] = (numeroActual[pos]+1) % mod
+	numeroActual[pos] = (numeroActual[pos]+1) % Global.mod
 	return numeroActual[pos]
 	
 func down(pos):
-	numeroActual[pos] = (numeroActual[pos]-1+mod) % mod	
+	numeroActual[pos] = (numeroActual[pos]-1+Global.mod) % Global.mod	
 	return numeroActual[pos]
 	
 func next_digit():
-	if pos < num_digits -1 :
+	if pos < Global.num_digits -1 :
 		pos+=1
+		$arrow.move_local_x(separador)
 	return pos
 
 func previous_digit():
 	if pos > 0:
 		pos-=1
+		$arrow.move_local_x(-separador)
 	return pos
 	
 func boom():
 	var num_tocados = 0
 	var num_hundidos = 0
 	
-	for i in range(num_digits):
+	for i in range(Global.num_digits):
 		if numeroSecreto[i] == numeroActual[i] :
 			num_hundidos+=1
 		else :
