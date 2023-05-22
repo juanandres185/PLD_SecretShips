@@ -4,26 +4,28 @@ var selected
 var menu_arange := []
 var menu_arange_pos := []
 
-var general
-var sounds
-var music
+var points
+var turns
+var time
 var back
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	general = $Node2D/General
-	sounds = $Node2D/Sounds
-	music = $Node2D/Music
+	points = $Node2D/Points
+	turns = $Node2D/Turns
+	time = $Node2D/Time
 	back = $Node2D/Return
-	
-	sounds.scale = Vector2(0.75,0.75)
-	music.scale = Vector2(0.75,0.75)
-	back.scale =Vector2(0.75,0.75)
+
+	back.scale = Vector2(0.75,0.75)
+	turns.scale = Vector2(0.75,0.75)
+	points.scale = Vector2(0.75,0.75)
 
 	selected = 1
-	menu_arange_pos = [back.position,general.position,sounds.position,music.position]
-	menu_arange = [back,general,sounds,music]
+	menu_arange_pos = [back.position,time.position,turns.position,points.position]
+	menu_arange = [back,time,turns,points]
+	
+
 	
 func go_right():
 	
@@ -79,10 +81,10 @@ func select_option():
 		0:
 			return "return"
 		1:
-			return "options_general"
+			return "play_time"
 		2:
-			return "options_sounds"
+			return "play_turns"
 		3:
-			return "options_music"
+			return "play_points"
 		_:
 			return "return"

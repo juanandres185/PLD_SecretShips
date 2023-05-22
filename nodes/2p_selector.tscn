@@ -17,6 +17,9 @@ func _ready():
 	$p1_selector.tecla_down = KEY_S
 	$p1_selector.tecla_right = KEY_D
 	$p1_selector.tecla_left = KEY_A
+	
+	$p1_selector.visible = true
+	$p2_selector.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -30,11 +33,12 @@ func _input(event):
 				p1_number = $p1_selector.numeroActual
 				$p1_selector.visible = false
 				$p2_selector.visible = true
-			
-			else : 
-				if $p2_selector.visible:
+			elif $p2_selector.visible:
 					p2_number = $p2_selector.numeroActual
 					start_game(p1_number, p2_number)
+		elif event.keycode == KEY_G:
+			$p1_selector.visible = true
+			$p2_selector.visible = false
 				
 func start_game(p1_number, p2_number):
 	Global.p2_number = p1_number

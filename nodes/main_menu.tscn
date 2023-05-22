@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4l6f5khc0tqo"]
+[gd_scene load_steps=19 format=3 uid="uid://b4l6f5khc0tqo"]
 
 [ext_resource type="Script" path="res://nodes/main_menu.gd" id="1_r15oa"]
 [ext_resource type="Texture2D" uid="uid://bwu5ftfmp44wq" path="res://sprites/MainMenu/BackgroundBeach.png" id="1_yq885"]
@@ -9,6 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://bsfhood2a2far" path="res://sprites/MainMenu/Exit.png" id="4_2rmmr"]
 [ext_resource type="Texture2D" uid="uid://fq7lnqkks6it" path="res://sprites/MainMenu/Title.png" id="5_2sl3g"]
 [ext_resource type="Script" path="res://nodes/OptionsMenu.gd" id="9_bakp8"]
+[ext_resource type="Texture2D" uid="uid://gh1tb8grkqfl" path="res://sprites/OptionsMenu/GeneralSound.png" id="10_wqaca"]
+[ext_resource type="Texture2D" uid="uid://dy5bjc8mse3wp" path="res://sprites/OptionsMenu/Sounds.png" id="11_p035g"]
+[ext_resource type="Texture2D" uid="uid://daawqps47q8ch" path="res://sprites/OptionsMenu/Music.png" id="12_g420j"]
+[ext_resource type="Texture2D" uid="uid://b0h5r6q6bqk8x" path="res://sprites/OptionsMenu/Return.png" id="13_go5s3"]
+[ext_resource type="Script" path="res://nodes/PlayMenu.gd" id="14_iq051"]
+[ext_resource type="Texture2D" uid="uid://der711c1ocxsd" path="res://sprites/PlayMenu/Points.png" id="15_q5ea7"]
+[ext_resource type="Texture2D" uid="uid://dug6ka48dufs4" path="res://sprites/PlayMenu/Turns.png" id="16_fggmi"]
+[ext_resource type="Texture2D" uid="uid://c5qn8ipg8aa7p" path="res://sprites/PlayMenu/Time.png" id="17_8uol2"]
+[ext_resource type="Texture2D" uid="uid://b57kwo74jwsyi" path="res://sprites/PlayMenu/Return.png" id="18_2fvow"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -51,7 +60,7 @@ scale = Vector2(1.70667, 1.70667)
 texture = ExtResource("3_6mpq4")
 
 [node name="Config" type="Sprite2D" parent="MainMenu/Node2D"]
-position = Vector2(280, 576)
+position = Vector2(287, 576)
 scale = Vector2(1.70333, 1.70333)
 texture = ExtResource("3_ras2k")
 
@@ -84,22 +93,22 @@ script = ExtResource("9_bakp8")
 [node name="General" type="Sprite2D" parent="OptionsMenu/Node2D"]
 position = Vector2(960, 576)
 scale = Vector2(1.70667, 1.70667)
-texture = ExtResource("2_auwm8")
+texture = ExtResource("10_wqaca")
 
 [node name="Sounds" type="Sprite2D" parent="OptionsMenu/Node2D"]
 position = Vector2(1632, 576)
 scale = Vector2(1.70667, 1.70667)
-texture = ExtResource("3_6mpq4")
+texture = ExtResource("11_p035g")
 
 [node name="Music" type="Sprite2D" parent="OptionsMenu/Node2D"]
-position = Vector2(280, 576)
-scale = Vector2(1.70333, 1.70333)
-texture = ExtResource("3_ras2k")
-
-[node name="Return" type="Sprite2D" parent="OptionsMenu/Node2D"]
 position = Vector2(2304, 576)
 scale = Vector2(1.70333, 1.70333)
-texture = ExtResource("4_2rmmr")
+texture = ExtResource("12_g420j")
+
+[node name="Return" type="Sprite2D" parent="OptionsMenu/Node2D"]
+position = Vector2(288, 576)
+scale = Vector2(1.70333, 1.70333)
+texture = ExtResource("13_go5s3")
 
 [node name="Resolution" type="Sprite2D" parent="OptionsMenu/Node2D"]
 visible = false
@@ -130,31 +139,63 @@ offset_top = -1080.0
 offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("14_iq051")
 
 [node name="Node2D" type="Node2D" parent="PlayMenu"]
 
-[node name="Points" type="Sprite2D" parent="PlayMenu/Node2D"]
-position = Vector2(960, 576)
-scale = Vector2(1.70667, 1.70667)
-texture = ExtResource("2_auwm8")
-
 [node name="Turns" type="Sprite2D" parent="PlayMenu/Node2D"]
-position = Vector2(960, 576)
+position = Vector2(1632, 576)
 scale = Vector2(1.70667, 1.70667)
-texture = ExtResource("2_auwm8")
+texture = ExtResource("16_fggmi")
 
 [node name="Time" type="Sprite2D" parent="PlayMenu/Node2D"]
 position = Vector2(960, 576)
 scale = Vector2(1.70667, 1.70667)
-texture = ExtResource("2_auwm8")
+texture = ExtResource("17_8uol2")
 
-[node name="Title" type="Sprite2D" parent="PlayMenu/Node2D"]
+[node name="Return" type="Sprite2D" parent="PlayMenu/Node2D"]
+position = Vector2(288, 576)
+scale = Vector2(1.70667, 1.70667)
+texture = ExtResource("18_2fvow")
+
+[node name="Points" type="Sprite2D" parent="PlayMenu/Node2D"]
+position = Vector2(2304.5, 572)
+scale = Vector2(1.70333, 1.68)
+texture = ExtResource("15_q5ea7")
+
+[node name="TitleS" type="Sprite2D" parent="PlayMenu/Node2D"]
 position = Vector2(960, 137.399)
 scale = Vector2(0.853333, 0.864006)
-texture = ExtResource("3_ras2k")
+texture = ExtResource("2_auwm8")
+
+[node name="TitleM" type="Sprite2D" parent="PlayMenu/Node2D"]
+position = Vector2(960, 137.399)
+scale = Vector2(0.853333, 0.864006)
+texture = ExtResource("3_6mpq4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayMenu/Node2D"]
 root_node = NodePath("../../..")
+
+[node name="VolumeMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Node2D" type="Node2D" parent="VolumeMenu"]
+
+[node name="Minus" type="Sprite2D" parent="VolumeMenu/Node2D"]
+
+[node name="Plus" type="Sprite2D" parent="VolumeMenu/Node2D"]
+
+[node name="Volume" type="TextEdit" parent="VolumeMenu/Node2D"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="TitleG" type="Sprite2D" parent="VolumeMenu/Node2D"]
+
+[node name="TitleS" type="Sprite2D" parent="VolumeMenu/Node2D"]
+
+[node name="TitleM" type="Sprite2D" parent="VolumeMenu/Node2D"]
 
 [node name="SelectOption" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
