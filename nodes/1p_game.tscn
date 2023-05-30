@@ -5,6 +5,7 @@
 [sub_resource type="GDScript" id="GDScript_6xuy8"]
 script/source = "extends Node2D
 
+var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,9 +18,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_player_finish(score):
+	finish()
+
+
+func finish():
+	get_tree().change_scene_to_file(\"res://nodes/main_menu.tscn\")
 "
 
 [node name="1p_game" type="Node2D"]
 script = SubResource("GDScript_6xuy8")
 
 [node name="Player" parent="." instance=ExtResource("1_ya5ec")]
+
+[connection signal="finish" from="Player" to="." method="_on_player_finish"]

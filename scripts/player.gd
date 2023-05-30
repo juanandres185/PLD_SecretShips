@@ -4,11 +4,17 @@ var disparo = preload("res://nodes/disparo.tscn")
 var pos_disparo = Vector2(20,220)
 
 var num_canons = 0
-
 var separador = 100
+
+var points_per_turn = 250
+var points_per_second = 10
 
 var numeroSecreto = [1,2,3,4]
 var numeroActual = [0,0,0,0]
+
+var score
+var count_time
+var count_turns
 
 var pos
 
@@ -18,8 +24,29 @@ var tecla_right
 var tecla_left
 var tecla_boom
 
+signal finish(score)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	if Global.win_system == 1:
+		score = 10000
+		count_time=false
+		count_turns=true
+	elif Global.win_system == 2:
+		score = 10000
+		count_time=true
+		count_turns=false
+	elif Global.win_system == 3:
+		score = 10000
+		count_time=true
+		count_turns=true
+	else:
+		print("ERROR CON EL SISTEMA DE PUNTUACIÓN")
+
+	$score.text = str(score)
+	
+	
 	tecla_up = KEY_UP
 	tecla_down = KEY_DOWN
 	tecla_right = KEY_RIGHT
@@ -77,7 +104,16 @@ func boom():
 			for digit in numeroSecreto:
 				if digit == numeroActual[i]:
 					num_tocados+=1
-	
+					
+	if num_hundidos == Global.num_digits:
+		finish.emit(score)
+					
+	if count_turns:
+		score-=points_per_turn
+		$score.text = str(score)
+		if score == 0:
+			finish.emit(score)
+		
 	return [num_tocados, num_hundidos]
 	
 	
@@ -126,3 +162,11 @@ func _on_boom_pressed():
 	add_child(new_disparo)
 	
 	print(new_disparo.position)
+
+
+func _on_timer_timeout():
+	if count_time:
+		score-=points_per_second
+		$score.text = str(score)
+		if score == 0:
+			finish.emit(score)

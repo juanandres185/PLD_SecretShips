@@ -5,6 +5,11 @@
 [sub_resource type="GDScript" id="GDScript_cpfr4"]
 script/source = "extends Node2D
 
+var p1_finished
+var p2_finished
+
+var p1_score
+var p2_score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +22,26 @@ func _ready():
 	
 	$Player1.numeroSecreto = Global.p1_number
 	$Player2.numeroSecreto = Global.p2_number
+	
+	p1_finished = false
+	p2_finished = false
+
+
+func _on_player_1_finish(score):
+	p1_score = score
+	p1_finished = true
+	if p1_finished and p2_finished:
+		finish()
+
+func _on_player_2_finish(score):
+	p2_score = score
+	p2_finished = true
+	if p1_finished and p2_finished:
+		finish()
+		
+func finish():
+	get_tree().change_scene_to_file(\"res://nodes/main_menu.tscn\")
+	
 "
 
 [node name="2p_game" type="Node2D"]
@@ -27,3 +52,6 @@ position = Vector2(37, 14)
 
 [node name="Player2" parent="." instance=ExtResource("1_fss41")]
 position = Vector2(712, 6)
+
+[connection signal="finish" from="Player1" to="." method="_on_player_1_finish"]
+[connection signal="finish" from="Player2" to="." method="_on_player_2_finish"]

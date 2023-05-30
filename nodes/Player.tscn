@@ -23,4 +23,22 @@ position = Vector2(47, 161)
 scale = Vector2(0.308348, 0.469172)
 texture = ExtResource("3_0vnpm")
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="score_title" type="Label" parent="."]
+offset_left = 382.0
+offset_top = 205.0
+offset_right = 435.0
+offset_bottom = 231.0
+text = "SCORE:
+"
+
+[node name="score" type="Label" parent="."]
+offset_left = 458.0
+offset_top = 207.0
+offset_right = 498.0
+offset_bottom = 230.0
+
 [connection signal="pressed" from="Boom" to="." method="_on_boom_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

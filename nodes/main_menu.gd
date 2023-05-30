@@ -4,7 +4,6 @@ var menu_origin_position := Vector2.ZERO
 var menu_origin_size := Vector2.ZERO
 
 var num_players
-var win_system
 
 var current_menu
 var current_menu_pos
@@ -20,7 +19,6 @@ var play_menu
 func _ready():
 	
 	num_players = 0
-	win_system = 0
 	
 	main_menu = $MainMenu
 	options_menu = $OptionsMenu
@@ -90,13 +88,13 @@ func _on_select_option_pressed():
 		"main_exit":
 			get_tree().quit()
 		"play_turns":
-			win_system = 1
+			Global.win_system = 1
 			_load_game()
 		"play_time":
-			win_system = 2
+			Global.win_system = 2
 			_load_game()
 		"play_points":
-			win_system = 3
+			Global.win_system = 3
 			_load_game()
 		"options_general":
 			$VolumeMenu/Node2D/TitleG.visible = true
