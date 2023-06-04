@@ -73,7 +73,7 @@ func go_left():
 	var tween6 = create_tween()
 	tween6.tween_property(menu_arange[(selected-1)%mod],"scale",Vector2(1.71,1.71),0.3)
 	
-	selected = (selected - 1 + 4) %(len(menu_arange))
+	selected = (selected - 1 + mod) %mod
 	
 
 func select_option():

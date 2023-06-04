@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4l6f5khc0tqo"]
+[gd_scene load_steps=26 format=3 uid="uid://b4l6f5khc0tqo"]
 
 [ext_resource type="Script" path="res://nodes/main_menu.gd" id="1_r15oa"]
 [ext_resource type="Texture2D" uid="uid://bwu5ftfmp44wq" path="res://sprites/MainMenu/BackgroundBeach.png" id="1_yq885"]
@@ -13,11 +13,18 @@
 [ext_resource type="Texture2D" uid="uid://dy5bjc8mse3wp" path="res://sprites/OptionsMenu/Sounds.png" id="11_p035g"]
 [ext_resource type="Texture2D" uid="uid://daawqps47q8ch" path="res://sprites/OptionsMenu/Music.png" id="12_g420j"]
 [ext_resource type="Texture2D" uid="uid://b0h5r6q6bqk8x" path="res://sprites/OptionsMenu/Return.png" id="13_go5s3"]
+[ext_resource type="Texture2D" uid="uid://c0no71poyjwgn" path="res://sprites/OptionsMenu/Fullscreen.png" id="14_hnrjk"]
 [ext_resource type="Script" path="res://nodes/PlayMenu.gd" id="14_iq051"]
 [ext_resource type="Texture2D" uid="uid://der711c1ocxsd" path="res://sprites/PlayMenu/Points.png" id="15_q5ea7"]
 [ext_resource type="Texture2D" uid="uid://dug6ka48dufs4" path="res://sprites/PlayMenu/Turns.png" id="16_fggmi"]
 [ext_resource type="Texture2D" uid="uid://c5qn8ipg8aa7p" path="res://sprites/PlayMenu/Time.png" id="17_8uol2"]
 [ext_resource type="Texture2D" uid="uid://b57kwo74jwsyi" path="res://sprites/PlayMenu/Return.png" id="18_2fvow"]
+[ext_resource type="Texture2D" uid="uid://bfjbks6auevfa" path="res://sprites/VolumeMenu/Minus.png" id="19_dy6tc"]
+[ext_resource type="Script" path="res://nodes/VolumeMenu.gd" id="19_jdxf7"]
+[ext_resource type="Texture2D" uid="uid://bevc5p5k4cygj" path="res://sprites/VolumeMenu/GeneralSound.png" id="19_mvq82"]
+[ext_resource type="Texture2D" uid="uid://c11487uf0gehf" path="res://sprites/VolumeMenu/Sounds.png" id="20_gqokk"]
+[ext_resource type="Texture2D" uid="uid://bqcc52cyfplkt" path="res://sprites/VolumeMenu/Plus.png" id="20_o7pu2"]
+[ext_resource type="Texture2D" uid="uid://bib112aplncfm" path="res://sprites/VolumeMenu/Music.png" id="21_evgtm"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -117,14 +124,13 @@ scale = Vector2(1.70667, 1.70667)
 texture = ExtResource("2_auwm8")
 
 [node name="FullScreen" type="Sprite2D" parent="OptionsMenu/Node2D"]
-visible = false
-position = Vector2(960, 576)
+position = Vector2(3040, 576)
 scale = Vector2(1.70667, 1.70667)
-texture = ExtResource("2_auwm8")
+texture = ExtResource("14_hnrjk")
 
 [node name="Title" type="Sprite2D" parent="OptionsMenu/Node2D"]
 position = Vector2(960, 137.399)
-scale = Vector2(0.853333, 0.864006)
+scale = Vector2(0.853, 0.853)
 texture = ExtResource("3_ras2k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="OptionsMenu/Node2D"]
@@ -165,37 +171,74 @@ texture = ExtResource("15_q5ea7")
 
 [node name="TitleS" type="Sprite2D" parent="PlayMenu/Node2D"]
 position = Vector2(960, 137.399)
-scale = Vector2(0.853333, 0.864006)
+scale = Vector2(0.842, 0.853)
 texture = ExtResource("2_auwm8")
 
 [node name="TitleM" type="Sprite2D" parent="PlayMenu/Node2D"]
 position = Vector2(960, 137.399)
-scale = Vector2(0.853333, 0.864006)
+scale = Vector2(0.853, 0.853)
 texture = ExtResource("3_6mpq4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayMenu/Node2D"]
 root_node = NodePath("../../..")
 
 [node name="VolumeMenu" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2160.0
+offset_bottom = 2160.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_jdxf7")
 
 [node name="Node2D" type="Node2D" parent="VolumeMenu"]
 
 [node name="Minus" type="Sprite2D" parent="VolumeMenu/Node2D"]
+position = Vector2(288, 576)
+scale = Vector2(1.703, 1.703)
+texture = ExtResource("19_dy6tc")
 
 [node name="Plus" type="Sprite2D" parent="VolumeMenu/Node2D"]
-
-[node name="Volume" type="TextEdit" parent="VolumeMenu/Node2D"]
-offset_right = 8.0
-offset_bottom = 8.0
+position = Vector2(1632, 576)
+scale = Vector2(1.707, 1.707)
+texture = ExtResource("20_o7pu2")
 
 [node name="TitleG" type="Sprite2D" parent="VolumeMenu/Node2D"]
+position = Vector2(960, 137.399)
+scale = Vector2(0.853, 0.853)
+texture = ExtResource("19_mvq82")
 
 [node name="TitleS" type="Sprite2D" parent="VolumeMenu/Node2D"]
+position = Vector2(960, 137.399)
+scale = Vector2(0.853, 0.853)
+texture = ExtResource("20_gqokk")
 
 [node name="TitleM" type="Sprite2D" parent="VolumeMenu/Node2D"]
+position = Vector2(960, 137.399)
+scale = Vector2(0.853, 0.853)
+texture = ExtResource("21_evgtm")
+
+[node name="Volume" type="Label" parent="VolumeMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/font_size = 180
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SelectOption" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)

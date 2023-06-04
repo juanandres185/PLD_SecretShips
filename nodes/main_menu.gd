@@ -4,6 +4,7 @@ var menu_origin_position := Vector2.ZERO
 var menu_origin_size := Vector2.ZERO
 
 var num_players
+var volume_type
 
 var current_menu
 var current_menu_pos
@@ -12,6 +13,7 @@ var menu_stack := []
 var main_menu
 var options_menu
 var play_menu
+var volume_menu
 
 
 
@@ -19,10 +21,12 @@ var play_menu
 func _ready():
 	
 	num_players = 0
+	volume_type = 0
 	
 	main_menu = $MainMenu
 	options_menu = $OptionsMenu
 	play_menu = $PlayMenu
+	volume_menu = $VolumeMenu
 	
 	menu_origin_position = Vector2(0,0)
 	menu_origin_size = get_viewport_rect().size
@@ -61,6 +65,8 @@ func get_menu_from_menu_id(menu_id:String) -> Control:
 			return options_menu
 		"play_menu":
 			return play_menu
+		"volume_menu":
+			return volume_menu
 		_:
 			return main_menu
 
@@ -100,16 +106,28 @@ func _on_select_option_pressed():
 			$VolumeMenu/Node2D/TitleG.visible = true
 			$VolumeMenu/Node2D/TitleS.visible = false
 			$VolumeMenu/Node2D/TitleM.visible = false
+			volume_type = 0
+			$VolumeMenu/Volume.text = str(Global.volume_general)
+			move_to_next_menu("volume_menu")
 		"options_sounds":
 			$VolumeMenu/Node2D/TitleG.visible = false
 			$VolumeMenu/Node2D/TitleS.visible = true
 			$VolumeMenu/Node2D/TitleM.visible = false
-			print("WIP")
+			volume_type = 1
+			$VolumeMenu/Volume.text = str(Global.volume_sounds)
+			move_to_next_menu("volume_menu")
 		"options_music":
 			$VolumeMenu/Node2D/TitleG.visible = false
 			$VolumeMenu/Node2D/TitleS.visible = false
 			$VolumeMenu/Node2D/TitleM.visible = true
-			print("WIP")
+			volume_type = 2
+			$VolumeMenu/Volume.text = str(Global.volume_music)
+			move_to_next_menu("volume_menu")
+		"options_fullscreen":
+			Global.toggle_fullscreen()
+		"change_volume":
+			Global.change_volume(int($VolumeMenu/Volume.text),volume_type)
+			move_to_previous_menu()
 		"return":
 			move_to_previous_menu()
 		_:

@@ -8,6 +8,7 @@ var general
 var sounds
 var music
 var back
+var fullscreen
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,15 +16,17 @@ func _ready():
 	general = $Node2D/General
 	sounds = $Node2D/Sounds
 	music = $Node2D/Music
+	fullscreen = $Node2D/FullScreen
 	back = $Node2D/Return
 	
 	sounds.scale = Vector2(0.75,0.75)
 	music.scale = Vector2(0.75,0.75)
+	fullscreen.scale = Vector2(0.75,0.75)
 	back.scale =Vector2(0.75,0.75)
 
 	selected = 1
-	menu_arange_pos = [back.position,general.position,sounds.position,music.position]
-	menu_arange = [back,general,sounds,music]
+	menu_arange_pos = [back.position,general.position,sounds.position,music.position,fullscreen.position]
+	menu_arange = [back,general,sounds,music,fullscreen]
 	
 func go_right():
 	
@@ -71,7 +74,7 @@ func go_left():
 	var tween6 = create_tween()
 	tween6.tween_property(menu_arange[(selected-1)%mod],"scale",Vector2(1.71,1.71),0.3)
 	
-	selected = (selected - 1 + 4) %(len(menu_arange))
+	selected = (selected - 1 + mod) %mod
 	
 
 func select_option():
@@ -84,5 +87,7 @@ func select_option():
 			return "options_sounds"
 		3:
 			return "options_music"
+		4:
+			return "options_fullscreen"
 		_:
 			return "return"
