@@ -32,7 +32,8 @@ func change_volume(volume,volume_type):
 
 func toggle_fullscreen():
 	fullscreen = not(fullscreen)
-	config.set_value("graphs","fullscreen",fullscreen)
+	config.set_value("graphics","fullscreen",fullscreen)
+	config.save(config_path)
 	if(fullscreen):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:

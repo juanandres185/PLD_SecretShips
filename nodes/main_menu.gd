@@ -71,7 +71,7 @@ func get_menu_from_menu_id(menu_id:String) -> Control:
 			return main_menu
 
 func _load_game():
-	if (num_players == 1):	
+	if (num_players == 1):
 		get_tree().change_scene_to_file("res://nodes/1p_game.tscn")
 	else:
 		get_tree().change_scene_to_file("res://nodes/2p_selector.tscn")
