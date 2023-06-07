@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://fqeyw8fs1jl3"
+path="res://.godot/imported/Coffee2.wav-e2c6b3ed743da5a05628cb6d559ccc71.sample"
+
+[deps]
+
+source_file="res://sound/UI Soundpack/Coffee2.wav"
+dest_files=["res://.godot/imported/Coffee2.wav-e2c6b3ed743da5a05628cb6d559ccc71.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

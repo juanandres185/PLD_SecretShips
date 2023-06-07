@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b4l6f5khc0tqo"]
+[gd_scene load_steps=29 format=3 uid="uid://b4l6f5khc0tqo"]
 
 [ext_resource type="Script" path="res://nodes/main_menu.gd" id="1_r15oa"]
 [ext_resource type="Texture2D" uid="uid://bwu5ftfmp44wq" path="res://sprites/MainMenu/BackgroundBeach.png" id="1_yq885"]
@@ -25,6 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://c11487uf0gehf" path="res://sprites/VolumeMenu/Sounds.png" id="20_gqokk"]
 [ext_resource type="Texture2D" uid="uid://bqcc52cyfplkt" path="res://sprites/VolumeMenu/Plus.png" id="20_o7pu2"]
 [ext_resource type="Texture2D" uid="uid://bib112aplncfm" path="res://sprites/VolumeMenu/Music.png" id="21_evgtm"]
+[ext_resource type="AudioStream" uid="uid://bxloesc3wilhq" path="res://sound/Gangplank Galleon.mp3" id="26_gpcp7"]
+[ext_resource type="AudioStream" uid="uid://cd7r8hbvaow7j" path="res://sound/UI Soundpack/Abstract1.wav" id="27_bdk50"]
+[ext_resource type="AudioStream" uid="uid://bblvtf0g1h3l" path="res://sound/UI Soundpack/Abstract2.wav" id="27_qnjf2"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -276,6 +279,17 @@ anchor_bottom = 1.0
 offset_left = -576.0
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_gpcp7")
+volume_db = 11.23
+autoplay = true
+
+[node name="select_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_qnjf2")
+
+[node name="left_right_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_bdk50")
 
 [connection signal="pressed" from="SelectOption" to="." method="_on_select_option_pressed"]
 [connection signal="pressed" from="GoLeft" to="." method="_on_go_left_pressed"]

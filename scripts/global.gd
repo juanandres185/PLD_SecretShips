@@ -17,6 +17,26 @@ var fullscreen
 var resolution
 
 
+func get_volume_dB(volume_type):
+	print(volume_music)
+	print(volume_sounds)
+	print(volume_general)
+	
+	var vol
+	
+	if volume_type == 0:
+		vol = volume_music
+	if volume_type == 1:
+		vol = volume_sounds
+	
+	vol *= volume_general/100.0
+	vol -= 100
+	vol += 24	
+	
+	print(vol)
+	
+	return vol
+
 func change_volume(volume,volume_type):
 	match volume_type:
 		0:

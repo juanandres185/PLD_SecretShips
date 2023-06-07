@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://daitm0va0bavs"]
+[gd_scene load_steps=8 format=3 uid="uid://daitm0va0bavs"]
 
 [ext_resource type="Texture2D" uid="uid://cir1t4sablbap" path="res://sprites/Gameset/BackgroundSea.jpg" id="1_tmbeg"]
 [ext_resource type="PackedScene" uid="uid://b84t7ayu1w7vs" path="res://nodes/Player.tscn" id="1_ya5ec"]
 [ext_resource type="Texture2D" uid="uid://r3a6jq5dyv2a" path="res://sprites/Gameset/PirateShip.png" id="2_71ova"]
 [ext_resource type="Texture2D" uid="uid://d1u7yv05lmesk" path="res://sprites/Gameset/MainDeck.png" id="3_0ccan"]
 [ext_resource type="Texture2D" uid="uid://c3wlquhtwl2py" path="res://sprites/Gameset/Cannon.png" id="4_awfec"]
+[ext_resource type="AudioStream" uid="uid://cj8ka6kaw6crs" path="res://sound/Pirate Music Pack/Pirate 8.mp3" id="6_ix33a"]
 
 [sub_resource type="GDScript" id="GDScript_6xuy8"]
 script/source = "extends Node2D
@@ -18,10 +19,13 @@ func _ready():
 		num.append(randi_range(0,Global.mod-1))
 		
 	$Player.numeroSecreto = num
+	
+	$Music.volume_db = Global.get_volume_dB(0);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if $Music.playing == false:
+		$Music.play()
 
 
 func _on_player_finish(score):
@@ -90,5 +94,9 @@ position = Vector2(721, 856)
 texture = ExtResource("4_awfec")
 
 [node name="Player" parent="." instance=ExtResource("1_ya5ec")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ix33a")
+autoplay = true
 
 [connection signal="finish" from="Player" to="." method="_on_player_finish"]

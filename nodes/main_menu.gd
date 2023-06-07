@@ -32,7 +32,15 @@ func _ready():
 	menu_origin_size = get_viewport_rect().size
 	current_menu = main_menu
 	current_menu_pos = main_menu.global_position
-
+	
+func _process(delta):
+	if $Music.playing == false:
+		$Music.play()
+	
+	$Music.volume_db = Global.get_volume_dB(0)
+	$left_right_Sound.volume_db = Global.get_volume_dB(1)
+	$select_Sound.volume_db = Global.get_volume_dB(1)
+		
 func move_to_next_menu(next_menu_id: String):
 	var next_menu = get_menu_from_menu_id(next_menu_id)
 	
@@ -77,6 +85,8 @@ func _load_game():
 		get_tree().change_scene_to_file("res://nodes/2p_selector.tscn")
 
 func _on_select_option_pressed():
+	$select_Sound.play()
+	
 	var selected = current_menu.select_option()
 	match selected:
 		"main_single":
@@ -135,7 +145,9 @@ func _on_select_option_pressed():
 
 func _on_go_left_pressed():
 	current_menu.go_left()
+	$left_right_Sound.play()
 
 
 func _on_go_right_pressed():
 	current_menu.go_right()
+	$left_right_Sound.play()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnjheng7xw6u2"]
+[gd_scene load_steps=4 format=3 uid="uid://dnjheng7xw6u2"]
 
 [ext_resource type="PackedScene" uid="uid://b84t7ayu1w7vs" path="res://nodes/Player.tscn" id="1_fss41"]
+[ext_resource type="AudioStream" uid="uid://cj8ka6kaw6crs" path="res://sound/Pirate Music Pack/Pirate 8.mp3" id="2_jov7j"]
 
 [sub_resource type="GDScript" id="GDScript_cpfr4"]
 script/source = "extends Node2D
@@ -26,6 +27,11 @@ func _ready():
 	p1_finished = false
 	p2_finished = false
 
+	$Music.volume_db = Global.get_volume_dB(0);
+	
+func _process(delta):
+	if $Music.playing == false:
+		$Music.play()
 
 func _on_player_1_finish(score):
 	p1_score = score
@@ -52,6 +58,10 @@ position = Vector2(37, 14)
 
 [node name="Player2" parent="." instance=ExtResource("1_fss41")]
 position = Vector2(712, 6)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jov7j")
+autoplay = true
 
 [connection signal="finish" from="Player1" to="." method="_on_player_1_finish"]
 [connection signal="finish" from="Player2" to="." method="_on_player_2_finish"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwgxy7o3807r4"]
+[gd_scene load_steps=5 format=3 uid="uid://bwgxy7o3807r4"]
 
 [ext_resource type="PackedScene" uid="uid://cxs6d80olo5af" path="res://nodes/secret_number_selector.tscn" id="1_kwefy"]
 [ext_resource type="Texture2D" uid="uid://cgdrg4wmjp2ud" path="res://icon.svg" id="2_mttox"]
+[ext_resource type="AudioStream" uid="uid://b5nye5r14tqgk" path="res://sound/Pirate Music Pack/Pirate 6.mp3" id="3_4li6c"]
 
 [sub_resource type="GDScript" id="GDScript_vljw6"]
 script/source = "extends Node2D
@@ -21,10 +22,13 @@ func _ready():
 	
 	$p1_selector.visible = true
 	$p2_selector.visible = false
+	
+	$Music.volume_db = Global.get_volume_dB(0);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if $Music.playing == false:
+		$Music.play()
 	
 	
 func _input(event):
@@ -71,5 +75,9 @@ offset_top = 225.0
 offset_right = 473.0
 offset_bottom = 256.0
 icon = ExtResource("2_mttox")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4li6c")
+volume_db = 24.0
 
 [connection signal="pressed" from="ready" to="." method="_on_button_pressed"]
