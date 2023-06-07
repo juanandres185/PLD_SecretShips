@@ -1,44 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://b84t7ayu1w7vs"]
+[gd_scene load_steps=5 format=3 uid="uid://b84t7ayu1w7vs"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kdd8j"]
-[ext_resource type="Texture2D" uid="uid://cgdrg4wmjp2ud" path="res://icon.svg" id="3_0vnpm"]
-[ext_resource type="PackedScene" uid="uid://p01wvbaeefeh" path="res://nodes/disparo.tscn" id="3_tjvtc"]
+[ext_resource type="Texture2D" uid="uid://cbg6pgvwur341" path="res://sprites/DigitSelector/Pirata.png" id="3_qgi6d"]
+[ext_resource type="Texture2D" uid="uid://phexvqmy803l" path="res://sprites/DigitSelector/Boom.png" id="4_guquk"]
+[ext_resource type="FontFile" uid="uid://664eu3il4ttm" path="res://fonts/ChalkboardByMartaVanEck-gvpp.ttf" id="6_jmqbf"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_kdd8j")
-
-[node name="last_disparo" parent="." instance=ExtResource("3_tjvtc")]
-position = Vector2(7, 206)
-
-[node name="Boom" type="Button" parent="."]
-offset_left = 272.0
-offset_top = 204.0
-offset_right = 331.0
-offset_bottom = 235.0
-text = "BOOM"
-metadata/_edit_use_anchors_ = true
-
-[node name="arrow" type="Sprite2D" parent="."]
-position = Vector2(47, 161)
-scale = Vector2(0.308348, 0.469172)
-texture = ExtResource("3_0vnpm")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="score_title" type="Label" parent="."]
-offset_left = 382.0
-offset_top = 205.0
-offset_right = 435.0
-offset_bottom = 231.0
+offset_left = 728.0
+offset_top = -768.0
+offset_right = 900.0
+offset_bottom = -696.0
+theme_override_font_sizes/font_size = 50
 text = "SCORE:
 "
 
 [node name="score" type="Label" parent="."]
-offset_left = 458.0
-offset_top = 207.0
-offset_right = 498.0
-offset_bottom = 230.0
+offset_left = 912.0
+offset_top = -768.0
+offset_right = 952.0
+offset_bottom = -699.0
+theme_override_font_sizes/font_size = 50
 
-[connection signal="pressed" from="Boom" to="." method="_on_boom_pressed"]
+[node name="Boom" type="TextureButton" parent="."]
+offset_left = 768.0
+offset_top = -64.0
+offset_right = 1024.0
+offset_bottom = 192.0
+texture_normal = ExtResource("4_guquk")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="arrow" type="Sprite2D" parent="."]
+position = Vector2(9.39575, 87.8511)
+scale = Vector2(0.239223, 0.176983)
+texture = ExtResource("3_qgi6d")
+
+[node name="Touch" type="Label" parent="."]
+offset_left = -516.0
+offset_top = -305.979
+offset_right = -339.0
+offset_bottom = 254.021
+rotation = -0.0792981
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_jmqbf")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="Sunk" type="Label" parent="."]
+offset_left = -712.0
+offset_top = -289.979
+offset_right = -552.0
+offset_bottom = -233.979
+rotation = -0.100308
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_jmqbf")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Boom" to="." method="_on_boom_pressed"]

@@ -1,10 +1,7 @@
 extends Node2D
 
-var disparo = preload("res://nodes/disparo.tscn")
-var pos_disparo = Vector2(20,220)
-
 var num_canons = 0
-var separador = 100
+var separador = 170
 
 var points_per_turn = 250
 var points_per_second = 10
@@ -45,7 +42,8 @@ func _ready():
 		print("ERROR CON EL SISTEMA DE PUNTUACIÓN")
 
 	$score.text = str(score)
-	
+	$Touch.text = ""
+	$Sunk.text = ""
 	
 	tecla_up = KEY_UP
 	tecla_down = KEY_DOWN
@@ -61,8 +59,11 @@ func _ready():
 		
 		var cannon = preload("res://nodes/cannon.tscn").instantiate()
 		add_child(cannon)
+		move_child(cannon,i)
 		cannon.add_to_group("cannons")
 		cannon.position.x = i*separador
+	
+	
 
 func digit_up():
 	numeroActual[pos] = (numeroActual[pos]+1) % Global.mod
@@ -136,34 +137,21 @@ func _input(event):
 			previous_digit()
 			
 		if event.keycode == tecla_boom:
-			var ret = boom()
-			var new_disparo = disparo.instantiate()
-			new_disparo.shot(numeroActual, ret[0], ret[1])
-			pos_disparo.y+=20
-			new_disparo.position = pos_disparo
-			$last_disparo/hundidos.text = str(ret[1])
-			$last_disparo/tocados.text = str(ret[0])
-			$last_disparo/disparo.text = str(numeroActual)
-			add_child(new_disparo)
-			
-			print(new_disparo.position)
+			_on_boom_pressed()
 			
 
 
 func _on_boom_pressed():
 	var ret = boom()
-	var new_disparo = disparo.instantiate()
-	new_disparo.shot(numeroActual, ret[0], ret[1])
-	pos_disparo.y+=20
-	new_disparo.position = pos_disparo
-	$last_disparo/hundidos.text = str(ret[1])
-	$last_disparo/tocados.text = str(ret[0])
-	$last_disparo/disparo.text = str(numeroActual)
-	add_child(new_disparo)
+	$Touch.text += str(ret[0])+"\n"
+	$Sunk.text += str(ret[1])+"\n"
 	
-	print(new_disparo.position)
-
-
+	var touch1 = $Touch.text.split("\n")
+	var sunk1 = $Sunk.text.split("\n")
+	if (len(touch1) > 10):
+		$Touch.text = $Touch.text.left(len(touch1[0])+1)
+		$Sunk.text = $Sunk.text.left(len(sunk1[0])+1)
+	
 func _on_timer_timeout():
 	if count_time:
 		score-=points_per_second

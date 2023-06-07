@@ -1,29 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq54g8d2r5rop"]
+[gd_scene load_steps=4 format=3 uid="uid://dq54g8d2r5rop"]
 
 [ext_resource type="Script" path="res://scripts/cannon.gd" id="1_ijdv1"]
+[ext_resource type="Texture2D" uid="uid://c24ve3ykj1qa5" path="res://sprites/DigitSelector/UpDownArrow.png" id="2_aa2gb"]
+[ext_resource type="Texture2D" uid="uid://5ki640lv8xlo" path="res://sprites/DigitSelector/CannonSelector.png" id="3_nmk18"]
 
 [node name="Cannon" type="Node2D"]
 script = ExtResource("1_ijdv1")
 
-[node name="digit_up" type="Button" parent="."]
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 71.0
-offset_bottom = 30.0
-text = "digit_up"
+[node name="digit_up" type="TextureButton" parent="."]
+offset_left = 8.0
+offset_right = 120.0
+offset_bottom = 32.0
+texture_normal = ExtResource("2_aa2gb")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="digit_down" type="Button" parent="."]
-offset_top = 84.0
-offset_right = 92.0
-offset_bottom = 115.0
-text = "digit_down"
+[node name="digit_down" type="TextureButton" parent="."]
+offset_left = 8.0
+offset_top = 176.0
+offset_right = 120.0
+offset_bottom = 208.0
+texture_normal = ExtResource("2_aa2gb")
+ignore_texture_size = true
+stretch_mode = 0
+flip_v = true
 
-[node name="text" type="RichTextLabel" parent="."]
-offset_left = 18.0
-offset_top = 37.0
-offset_right = 58.0
-offset_bottom = 77.0
+[node name="Marker" type="Sprite2D" parent="."]
+position = Vector2(64, 104)
+scale = Vector2(0.264901, 0.264901)
+texture = ExtResource("3_nmk18")
+
+[node name="Digit" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 120.0
+offset_bottom = 144.0
+theme_override_font_sizes/font_size = 50
 text = "Hola"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="digit_up" to="." method="_on_digit_up_pressed"]
 [connection signal="pressed" from="digit_down" to="." method="_on_digit_down_pressed"]

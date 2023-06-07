@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://daitm0va0bavs"]
+[gd_scene load_steps=10 format=3 uid="uid://daitm0va0bavs"]
 
 [ext_resource type="Texture2D" uid="uid://cir1t4sablbap" path="res://sprites/Gameset/BackgroundSea.jpg" id="1_tmbeg"]
 [ext_resource type="PackedScene" uid="uid://b84t7ayu1w7vs" path="res://nodes/Player.tscn" id="1_ya5ec"]
 [ext_resource type="Texture2D" uid="uid://r3a6jq5dyv2a" path="res://sprites/Gameset/PirateShip.png" id="2_71ova"]
 [ext_resource type="Texture2D" uid="uid://d1u7yv05lmesk" path="res://sprites/Gameset/MainDeck.png" id="3_0ccan"]
 [ext_resource type="Texture2D" uid="uid://c3wlquhtwl2py" path="res://sprites/Gameset/Cannon.png" id="4_awfec"]
+[ext_resource type="Texture2D" uid="uid://i03vlsr33bj3" path="res://sprites/Gameset/Clipboard.png" id="5_rdj7k"]
 [ext_resource type="AudioStream" uid="uid://cj8ka6kaw6crs" path="res://sound/Pirate Music Pack/Pirate 8.mp3" id="6_ix33a"]
+[ext_resource type="FontFile" uid="uid://664eu3il4ttm" path="res://fonts/ChalkboardByMartaVanEck-gvpp.ttf" id="7_rx0yh"]
 
 [sub_resource type="GDScript" id="GDScript_6xuy8"]
 script/source = "extends Node2D
@@ -68,32 +70,90 @@ texture = ExtResource("2_71ova")
 [node name="MainShip" type="Node2D" parent="Control"]
 position = Vector2(16, 0)
 
+[node name="Cannons" type="Node2D" parent="Control/MainShip"]
+position = Vector2(688, 760)
+scale = Vector2(0.8, 0.8)
+
+[node name="Cannon1" type="Sprite2D" parent="Control/MainShip/Cannons"]
+position = Vector2(180, 180)
+texture = ExtResource("4_awfec")
+
+[node name="Cannon4" type="Sprite2D" parent="Control/MainShip/Cannons"]
+position = Vector2(819, 180)
+texture = ExtResource("4_awfec")
+
+[node name="Cannon3" type="Sprite2D" parent="Control/MainShip/Cannons"]
+position = Vector2(604, 180)
+texture = ExtResource("4_awfec")
+
+[node name="Cannon2" type="Sprite2D" parent="Control/MainShip/Cannons"]
+position = Vector2(389, 180)
+texture = ExtResource("4_awfec")
+
 [node name="MainDeck" type="Sprite2D" parent="Control/MainShip"]
-position = Vector2(960, 833.75)
-scale = Vector2(1.3913, 1.00716)
+position = Vector2(1089.07, 876.424)
+rotation = -0.013437
+scale = Vector2(1.23922, 0.981596)
 texture = ExtResource("3_0ccan")
 
-[node name="MainShip" type="Node2D" parent="Control/MainShip"]
-position = Vector2(112, -8)
-metadata/_edit_group_ = true
+[node name="ScoreMarker" type="Node2D" parent="Control/MainShip"]
 
-[node name="Cannon1" type="Sprite2D" parent="Control/MainShip/MainShip"]
-position = Vector2(512, 856)
-texture = ExtResource("4_awfec")
+[node name="Clipboard" type="Sprite2D" parent="Control/MainShip/ScoreMarker"]
+position = Vector2(232, 728)
+rotation = -0.0750641
+scale = Vector2(0.485465, 0.485465)
+texture = ExtResource("5_rdj7k")
 
-[node name="Cannon4" type="Sprite2D" parent="Control/MainShip/MainShip"]
-position = Vector2(1151, 856)
-texture = ExtResource("4_awfec")
+[node name="Sunk" type="Label" parent="Control/MainShip/ScoreMarker"]
+offset_left = 55.0
+offset_top = 475.0
+offset_right = 215.0
+offset_bottom = 531.0
+rotation = -0.08503
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_rx0yh")
+theme_override_font_sizes/font_size = 50
+text = "Hundidos"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Cannon3" type="Sprite2D" parent="Control/MainShip/MainShip"]
-position = Vector2(936, 856)
-texture = ExtResource("4_awfec")
+[node name="Touch" type="Label" parent="Control/MainShip/ScoreMarker"]
+offset_left = 256.0
+offset_top = 459.0
+offset_right = 433.0
+offset_bottom = 515.0
+rotation = -0.0945344
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_rx0yh")
+theme_override_font_sizes/font_size = 50
+text = "Tocados"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Cannon2" type="Sprite2D" parent="Control/MainShip/MainShip"]
-position = Vector2(721, 856)
-texture = ExtResource("4_awfec")
+[node name="Number" type="Label" parent="Control/MainShip/ScoreMarker"]
+offset_left = -8.0
+offset_top = 536.0
+offset_right = 51.0
+offset_bottom = 593.0
+rotation = -0.0805838
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_rx0yh")
+theme_override_font_sizes/font_size = 50
+text = "1
+2
+3
+4
+5
+6
+7
+8
+9
+10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Player" parent="." instance=ExtResource("1_ya5ec")]
+position = Vector2(771, 824)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ix33a")

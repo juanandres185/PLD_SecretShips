@@ -15,7 +15,12 @@ var options_menu
 var play_menu
 var volume_menu
 
-
+func _input(event):
+	if event.is_action_pressed("ui_left"): _on_go_left_pressed()
+	if event.is_action_pressed("ui_right"): _on_go_right_pressed()
+	if event.is_action_pressed("ui_accept"): _on_select_option_pressed()
+	
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

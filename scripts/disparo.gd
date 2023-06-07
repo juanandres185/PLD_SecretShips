@@ -9,4 +9,4 @@ func _ready():
 func shot(disparo, tocados, hundidos):
 	$tocados.text = str(tocados)
 	$hundidos.text = str(hundidos)
-	$disparo.text = str(disparo)
+	$disparo.text = "Disparo Nº"+str(disparo)
