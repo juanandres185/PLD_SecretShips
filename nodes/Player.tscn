@@ -21,9 +21,9 @@ text = "SCORE:
 "
 
 [node name="score" type="Label" parent="."]
-offset_left = 912.0
+offset_left = 909.0
 offset_top = -768.0
-offset_right = 952.0
+offset_right = 949.0
 offset_bottom = -699.0
 theme_override_font_sizes/font_size = 50
 
@@ -42,22 +42,33 @@ scale = Vector2(0.239223, 0.176983)
 texture = ExtResource("3_qgi6d")
 
 [node name="Touch" type="Label" parent="."]
-offset_left = -516.0
-offset_top = -305.979
-offset_right = -339.0
-offset_bottom = 254.021
-rotation = -0.0792981
+offset_left = -552.0
+offset_top = -328.0
+offset_right = -485.0
+offset_bottom = 232.0
+rotation = -0.086058
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_jmqbf")
 theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 
 [node name="Sunk" type="Label" parent="."]
-offset_left = -712.0
-offset_top = -289.979
-offset_right = -552.0
-offset_bottom = -233.979
-rotation = -0.100308
+offset_left = -704.0
+offset_top = -304.0
+offset_right = -645.0
+offset_bottom = 232.0
+rotation = -0.0785732
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_jmqbf")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="Shot" type="Label" parent="."]
+offset_left = -432.0
+offset_top = -336.0
+offset_right = -326.0
+offset_bottom = 224.0
+rotation = -0.0774176
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_jmqbf")
 theme_override_font_sizes/font_size = 50

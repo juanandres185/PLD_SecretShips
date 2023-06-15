@@ -99,42 +99,42 @@ texture = ExtResource("3_0ccan")
 [node name="ScoreMarker" type="Node2D" parent="Control/MainShip"]
 
 [node name="Clipboard" type="Sprite2D" parent="Control/MainShip/ScoreMarker"]
-position = Vector2(232, 728)
+position = Vector2(243.112, 723.238)
 rotation = -0.0750641
-scale = Vector2(0.485465, 0.485465)
+scale = Vector2(0.506375, 0.490332)
 texture = ExtResource("5_rdj7k")
 
 [node name="Sunk" type="Label" parent="Control/MainShip/ScoreMarker"]
-offset_left = 55.0
-offset_top = 475.0
-offset_right = 215.0
-offset_bottom = 531.0
+offset_left = 24.0
+offset_top = 464.0
+offset_right = 184.0
+offset_bottom = 520.0
 rotation = -0.08503
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_rx0yh")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Hundidos"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Touch" type="Label" parent="Control/MainShip/ScoreMarker"]
-offset_left = 256.0
-offset_top = 459.0
-offset_right = 433.0
-offset_bottom = 515.0
+offset_left = 160.0
+offset_top = 456.0
+offset_right = 337.0
+offset_bottom = 512.0
 rotation = -0.0945344
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_rx0yh")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Tocados"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Number" type="Label" parent="Control/MainShip/ScoreMarker"]
+[node name="Numbers" type="Label" parent="Control/MainShip/ScoreMarker"]
 offset_left = -8.0
-offset_top = 536.0
+offset_top = 520.0
 offset_right = 51.0
-offset_bottom = 593.0
+offset_bottom = 1080.0
 rotation = -0.0805838
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_rx0yh")
@@ -149,6 +149,19 @@ text = "1
 8
 9
 10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shot" type="Label" parent="Control/MainShip/ScoreMarker"]
+offset_left = 304.0
+offset_top = 440.0
+offset_right = 481.0
+offset_bottom = 496.0
+rotation = -0.0945344
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_rx0yh")
+theme_override_font_sizes/font_size = 40
+text = "Disparo"
 horizontal_alignment = 1
 vertical_alignment = 1
 

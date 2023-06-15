@@ -44,6 +44,8 @@ func _ready():
 	$score.text = str(score)
 	$Touch.text = ""
 	$Sunk.text = ""
+	$Shot.text = ""
+	
 	
 	tecla_up = KEY_UP
 	tecla_down = KEY_DOWN
@@ -52,7 +54,8 @@ func _ready():
 	tecla_boom = KEY_ENTER
 	pos = 0
 	numeroActual = []
-	numeroSecreto=Global.p1_number
+	#numeroSecreto=Global.p1_number
+	
 	
 	for i in range(Global.num_digits):
 		numeroActual+=[0]
@@ -98,13 +101,16 @@ func boom():
 	var num_tocados = 0
 	var num_hundidos = 0
 	
-	for i in range(Global.num_digits):
-		if numeroSecreto[i] == numeroActual[i] :
-			num_hundidos+=1
-		else :
-			for digit in numeroSecreto:
-				if digit == numeroActual[i]:
-					num_tocados+=1
+	for i in range(0,10):
+		var sec = numeroSecreto.count(i)
+		var act = numeroActual.count(i)
+		
+		num_tocados += min(sec,act)
+	
+	for i in range(len(numeroActual)):
+		if (numeroActual[i] == numeroSecreto[i]):
+			num_tocados -= 1
+			num_hundidos += 1
 					
 	if num_hundidos == Global.num_digits:
 		finish.emit(score)
@@ -145,12 +151,22 @@ func _on_boom_pressed():
 	var ret = boom()
 	$Touch.text += str(ret[0])+"\n"
 	$Sunk.text += str(ret[1])+"\n"
+	for i in numeroActual:
+		$Shot.text +=str(i)
+	$Shot.text += "\n"
 	
-	var touch1 = $Touch.text.split("\n")
-	var sunk1 = $Sunk.text.split("\n")
-	if (len(touch1) > 10):
-		$Touch.text = $Touch.text.left(len(touch1[0])+1)
-		$Sunk.text = $Sunk.text.left(len(sunk1[0])+1)
+	var first_touch = $Touch.text.split("\n")[0]
+	var first_sunk = $Sunk.text.split("\n")[0]
+	var first_shot = $Shot.text.split("\n")[0]
+	
+	if (len($Touch.text.split("\n")) > 11):
+		$Touch.text = $Touch.text.trim_prefix(first_touch+"\n")
+		$Sunk.text = $Sunk.text.trim_prefix(first_sunk+"\n")
+		$Shot.text = $Shot.text.trim_prefix(first_shot+"\n")
+		
+		
+		
+		
 	
 func _on_timer_timeout():
 	if count_time:
