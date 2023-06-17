@@ -17,28 +17,25 @@ var score
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var num = []
+	
 	for i in range(Global.num_digits):
 		num.append(randi_range(0,Global.mod-1))
-		
+	
+	num = [0,1,2,3]
+	
 	$Player.numeroSecreto = num
+	Global.p1_number = num
 	
 	$Music.volume_db = Global.get_volume_dB(0);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if $Music.playing == false:
-		$Music.play()
-
-
-func _on_player_finish(score):
-	finish()
-
-
-func finish():
-	get_tree().change_scene_to_file(\"res://nodes/main_menu.tscn\")
+func _on_player_finish(new_score):
+	Global.score = new_score
+	get_tree().change_scene_to_file(\"res://nodes/final_game_screen.tscn\")
 "
 
 [node name="1p_game" type="Node2D"]
+position = Vector2(3, 0)
 script = SubResource("GDScript_6xuy8")
 
 [node name="Control" type="Control" parent="."]
@@ -78,16 +75,18 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(180, 180)
 texture = ExtResource("4_awfec")
 
-[node name="Cannon4" type="Sprite2D" parent="Control/MainShip/Cannons"]
-position = Vector2(819, 180)
+[node name="Cannon2" type="Sprite2D" parent="Control/MainShip/Cannons"]
+position = Vector2(389, 180)
 texture = ExtResource("4_awfec")
 
 [node name="Cannon3" type="Sprite2D" parent="Control/MainShip/Cannons"]
 position = Vector2(604, 180)
+scale = Vector2(1, 1)
 texture = ExtResource("4_awfec")
 
-[node name="Cannon2" type="Sprite2D" parent="Control/MainShip/Cannons"]
-position = Vector2(389, 180)
+[node name="Cannon4" type="Sprite2D" parent="Control/MainShip/Cannons"]
+position = Vector2(819, 180)
+scale = Vector2(1, 1)
 texture = ExtResource("4_awfec")
 
 [node name="MainDeck" type="Sprite2D" parent="Control/MainShip"]

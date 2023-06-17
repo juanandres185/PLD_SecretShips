@@ -6,7 +6,7 @@ var separador = 170
 var points_per_turn = 250
 var points_per_second = 10
 
-var numeroSecreto = [1,2,3,4]
+var numeroSecreto = [0,0,0,0]
 var numeroActual = [0,0,0,0]
 
 var score
@@ -25,7 +25,6 @@ signal finish(score)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	if Global.win_system == 1:
 		score = 10000
 		count_time=false
@@ -54,7 +53,6 @@ func _ready():
 	tecla_boom = KEY_ENTER
 	pos = 0
 	numeroActual = []
-	#numeroSecreto=Global.p1_number
 	
 	
 	for i in range(Global.num_digits):
@@ -65,23 +63,14 @@ func _ready():
 		move_child(cannon,i)
 		cannon.add_to_group("cannons")
 		cannon.position.x = i*separador
-	
-	
 
-func digit_up():
-	numeroActual[pos] = (numeroActual[pos]+1) % Global.mod
-	return numeroActual
-	
-func digit_down():
-	numeroActual[pos] = (numeroActual[pos]-1+Global.mod) % Global.mod	
-	return numeroActual
 	
 #En esta función se requiere una variable pos llamada igual que la variable global pos.
-func up(pos):
+func up():
 	numeroActual[pos] = (numeroActual[pos]+1) % Global.mod
 	return numeroActual[pos]
 	
-func down(pos):
+func down():
 	numeroActual[pos] = (numeroActual[pos]-1+Global.mod) % Global.mod	
 	return numeroActual[pos]
 	

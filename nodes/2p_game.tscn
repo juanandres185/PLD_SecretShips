@@ -14,7 +14,6 @@ var p2_score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print($Player1.tecla_up)
 	$Player1.tecla_up = KEY_W
 	$Player1.tecla_down = KEY_S
 	$Player1.tecla_right = KEY_D

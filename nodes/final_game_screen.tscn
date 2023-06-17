@@ -1,0 +1,144 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckfc81j8flot2"]
+
+[ext_resource type="Texture2D" uid="uid://o3pcoiqx0g4l" path="res://sprites/FinishScreen/Madera.jpg" id="1_wu6ii"]
+[ext_resource type="Script" path="res://ResultsPatch.gd" id="2_ckme4"]
+[ext_resource type="Texture2D" uid="uid://buo60q6qh5wky" path="res://sprites/FinishScreen/Partchment.png" id="3_2wx8r"]
+[ext_resource type="Texture2D" uid="uid://bye4ng3tnv56a" path="res://sprites/FinishScreen/Treasure.png" id="4_j4gsu"]
+[ext_resource type="FontFile" uid="uid://y5v6v3qadlop" path="res://fonts/BlackRose-2Onld.ttf" id="5_j68ni"]
+
+[node name="FinalGameScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wu6ii")
+
+[node name="ResultsPatch" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ckme4")
+
+[node name="Parchment" type="TextureRect" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2wx8r")
+expand_mode = 1
+
+[node name="Treasure" type="TextureRect" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1088.0
+offset_top = 448.0
+offset_right = -320.0
+offset_bottom = -184.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_j4gsu")
+expand_mode = 1
+flip_h = true
+
+[node name="GameMode" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 432.0
+offset_right = -832.0
+offset_bottom = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_j68ni")
+theme_override_font_sizes/font_size = 60
+text = "Modo de juego: "
+
+[node name="Puntuation" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 504.0
+offset_right = -896.0
+offset_bottom = -504.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_j68ni")
+theme_override_font_sizes/font_size = 60
+text = "Puntuación Final:"
+
+[node name="Code" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 576.0
+offset_right = -896.0
+offset_bottom = -432.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_j68ni")
+theme_override_font_sizes/font_size = 60
+text = "Código Final:"
+
+[node name="Result" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = -880.0
+offset_bottom = -740.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.666667, 0.427451, 0, 1)
+theme_override_fonts/font = ExtResource("5_j68ni")
+theme_override_font_sizes/font_size = 200
+text = "VICTORIA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 768.0
+offset_right = -1174.0
+offset_bottom = -251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.298039, 0.298039, 0.298039, 1)
+theme_override_fonts/font = ExtResource("5_j68ni")
+theme_override_font_sizes/font_size = 50
+text = "Volver al menu principal"
+flat = true
+
+[connection signal="pressed" from="ResultsPatch/Exit" to="ResultsPatch" method="_on_exit_pressed"]

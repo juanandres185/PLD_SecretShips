@@ -1,27 +1,27 @@
-[gd_scene load_steps=29 format=3 uid="uid://b4l6f5khc0tqo"]
+[gd_scene load_steps=29 format=3 uid="uid://ce2s2bhcugj23"]
 
-[ext_resource type="Script" path="res://nodes/main_menu.gd" id="1_r15oa"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_gi81r"]
 [ext_resource type="Texture2D" uid="uid://bwu5ftfmp44wq" path="res://sprites/MainMenu/BackgroundBeach.png" id="1_yq885"]
 [ext_resource type="Texture2D" uid="uid://cn6ljxhgx2iou" path="res://sprites/MainMenu/SinglePlayer.png" id="2_auwm8"]
 [ext_resource type="Texture2D" uid="uid://cfgonf0skacxm" path="res://sprites/MainMenu/Multiplayer.png" id="3_6mpq4"]
+[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="3_hfiw1"]
 [ext_resource type="Texture2D" uid="uid://dlxqrv4c1xy7g" path="res://sprites/MainMenu/Config.png" id="3_ras2k"]
-[ext_resource type="Script" path="res://nodes/MainMenu.gd" id="3_txnhd"]
 [ext_resource type="Texture2D" uid="uid://bsfhood2a2far" path="res://sprites/MainMenu/Exit.png" id="4_2rmmr"]
 [ext_resource type="Texture2D" uid="uid://fq7lnqkks6it" path="res://sprites/MainMenu/Title.png" id="5_2sl3g"]
-[ext_resource type="Script" path="res://nodes/OptionsMenu.gd" id="9_bakp8"]
+[ext_resource type="Script" path="res://scripts/OptionsMenu.gd" id="9_5f1d3"]
 [ext_resource type="Texture2D" uid="uid://gh1tb8grkqfl" path="res://sprites/OptionsMenu/GeneralSound.png" id="10_wqaca"]
 [ext_resource type="Texture2D" uid="uid://dy5bjc8mse3wp" path="res://sprites/OptionsMenu/Sounds.png" id="11_p035g"]
 [ext_resource type="Texture2D" uid="uid://daawqps47q8ch" path="res://sprites/OptionsMenu/Music.png" id="12_g420j"]
 [ext_resource type="Texture2D" uid="uid://b0h5r6q6bqk8x" path="res://sprites/OptionsMenu/Return.png" id="13_go5s3"]
 [ext_resource type="Texture2D" uid="uid://c0no71poyjwgn" path="res://sprites/OptionsMenu/Fullscreen.png" id="14_hnrjk"]
-[ext_resource type="Script" path="res://nodes/PlayMenu.gd" id="14_iq051"]
+[ext_resource type="Script" path="res://scripts/PlayMenu.gd" id="15_m8g2r"]
 [ext_resource type="Texture2D" uid="uid://der711c1ocxsd" path="res://sprites/PlayMenu/Points.png" id="15_q5ea7"]
 [ext_resource type="Texture2D" uid="uid://dug6ka48dufs4" path="res://sprites/PlayMenu/Turns.png" id="16_fggmi"]
 [ext_resource type="Texture2D" uid="uid://c5qn8ipg8aa7p" path="res://sprites/PlayMenu/Time.png" id="17_8uol2"]
 [ext_resource type="Texture2D" uid="uid://b57kwo74jwsyi" path="res://sprites/PlayMenu/Return.png" id="18_2fvow"]
 [ext_resource type="Texture2D" uid="uid://bfjbks6auevfa" path="res://sprites/VolumeMenu/Minus.png" id="19_dy6tc"]
-[ext_resource type="Script" path="res://nodes/VolumeMenu.gd" id="19_jdxf7"]
 [ext_resource type="Texture2D" uid="uid://bevc5p5k4cygj" path="res://sprites/VolumeMenu/GeneralSound.png" id="19_mvq82"]
+[ext_resource type="Script" path="res://scripts/VolumeMenu.gd" id="20_5xtq2"]
 [ext_resource type="Texture2D" uid="uid://c11487uf0gehf" path="res://sprites/VolumeMenu/Sounds.png" id="20_gqokk"]
 [ext_resource type="Texture2D" uid="uid://bqcc52cyfplkt" path="res://sprites/VolumeMenu/Plus.png" id="20_o7pu2"]
 [ext_resource type="Texture2D" uid="uid://bib112aplncfm" path="res://sprites/VolumeMenu/Music.png" id="21_evgtm"]
@@ -36,7 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_r15oa")
+script = ExtResource("1_gi81r")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -55,7 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_txnhd")
+script = ExtResource("3_hfiw1")
 
 [node name="Node2D" type="Node2D" parent="MainMenu"]
 
@@ -96,7 +96,7 @@ offset_top = 1080.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("9_bakp8")
+script = ExtResource("9_5f1d3")
 
 [node name="Node2D" type="Node2D" parent="OptionsMenu"]
 
@@ -148,7 +148,7 @@ offset_top = -1080.0
 offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("14_iq051")
+script = ExtResource("15_m8g2r")
 
 [node name="Node2D" type="Node2D" parent="PlayMenu"]
 
@@ -194,7 +194,7 @@ offset_top = 2160.0
 offset_bottom = 2160.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("19_jdxf7")
+script = ExtResource("20_5xtq2")
 
 [node name="Node2D" type="Node2D" parent="VolumeMenu"]
 

@@ -48,8 +48,8 @@ func ready():
 
 							
 func start_game(p1_number, p2_number):
-	Global.p2_number = p1_number
-	Global.p1_number = p2_number
+	Global.p1_number = p1_number
+	Global.p2_number = p2_number
 
 	get_tree().change_scene_to_file(\"res://nodes/2p_game.tscn\")
 	
