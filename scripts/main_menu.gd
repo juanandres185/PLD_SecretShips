@@ -43,8 +43,8 @@ func _process(delta):
 		$Music.play()
 	
 	$Music.volume_db = Global.get_volume_dB(0)
-	$left_right_Sound.volume_db = Global.get_volume_dB(1)
-	$select_Sound.volume_db = Global.get_volume_dB(1)
+	$left_right_Sound.volume_db = Global.get_volume_dB(1)+10
+	$select_Sound.volume_db = Global.get_volume_dB(1)+10
 		
 func move_to_next_menu(next_menu_id: String):
 	var next_menu = get_menu_from_menu_id(next_menu_id)

@@ -25,6 +25,11 @@ signal finish(score)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$win.volume_db = Global.get_volume_dB(1);
+	$changeNumber.volume_db = Global.get_volume_dB(1);
+	$movePlayer.volume_db = Global.get_volume_dB(1)-20;
+	$shot.volume_db = Global.get_volume_dB(1);
+	
 	if Global.win_system == 1:
 		score = 10000
 		count_time=false
@@ -40,7 +45,7 @@ func _ready():
 	else:
 		print("ERROR CON EL SISTEMA DE PUNTUACIÓN")
 
-	$score.text = str(score)
+	$score_box/score.text = str(score)
 	$Touch.text = ""
 	$Sunk.text = ""
 	$Shot.text = ""
@@ -66,11 +71,13 @@ func _ready():
 
 	
 #En esta función se requiere una variable pos llamada igual que la variable global pos.
-func up():
+func up(pos):
+	$changeNumber.play()
 	numeroActual[pos] = (numeroActual[pos]+1) % Global.mod
 	return numeroActual[pos]
 	
-func down():
+func down(pos):
+	$changeNumber.play()
 	numeroActual[pos] = (numeroActual[pos]-1+Global.mod) % Global.mod	
 	return numeroActual[pos]
 	
@@ -78,15 +85,19 @@ func next_digit():
 	if pos < Global.num_digits -1 :
 		pos+=1
 		$arrow.move_local_x(separador)
+		$movePlayer.play()
 	return pos
 
 func previous_digit():
 	if pos > 0:
 		pos-=1
 		$arrow.move_local_x(-separador)
+		$movePlayer.play()
 	return pos
 	
 func boom():
+	$shot.play()
+	
 	var num_tocados = 0
 	var num_hundidos = 0
 	
@@ -102,11 +113,16 @@ func boom():
 			num_hundidos += 1
 					
 	if num_hundidos == Global.num_digits:
-		finish.emit(score)
+		if $score_box/score.visible == true:
+			finish.emit(score)
+			$score_box/score_title.text = "Puntuación Final: " + str(score)
+			$score_box.move_local_x(-50)
+			$score_box/score.visible = false
+			$win.play()
 					
 	if count_turns:
 		score-=points_per_turn
-		$score.text = str(score)
+		$score_box/score.text = str(score)
 		if score == 0:
 			finish.emit(score)
 		
@@ -154,12 +170,16 @@ func _on_boom_pressed():
 		$Shot.text = $Shot.text.trim_prefix(first_shot+"\n")
 		
 		
-		
-		
 	
 func _on_timer_timeout():
 	if count_time:
 		score-=points_per_second
-		$score.text = str(score)
-		if score == 0:
+		$score_box/score.text = str(score)
+		if score <= 0:
 			finish.emit(score)
+			
+			
+					
+func set_score_pos(x,y):
+	$score_box.move_local_x(x)
+	$score_box.move_local_y(y)

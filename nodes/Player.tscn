@@ -1,31 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://b84t7ayu1w7vs"]
+[gd_scene load_steps=9 format=3 uid="uid://b84t7ayu1w7vs"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kdd8j"]
 [ext_resource type="Texture2D" uid="uid://cbg6pgvwur341" path="res://sprites/DigitSelector/Pirata.png" id="3_qgi6d"]
 [ext_resource type="Texture2D" uid="uid://phexvqmy803l" path="res://sprites/DigitSelector/Boom.png" id="4_guquk"]
+[ext_resource type="AudioStream" uid="uid://d1n056l8pn5by" path="res://sound/UI Soundpack/African4.wav" id="5_t5wbx"]
+[ext_resource type="AudioStream" uid="uid://dgo8ei2vob6uq" path="res://sound/UI Soundpack/Minimalist13.wav" id="6_1vtfu"]
 [ext_resource type="FontFile" uid="uid://664eu3il4ttm" path="res://fonts/ChalkboardByMartaVanEck-gvpp.ttf" id="6_jmqbf"]
+[ext_resource type="AudioStream" uid="uid://tltx7nj3d2pr" path="res://sound/UI Soundpack/Wood Block2.wav" id="7_63ep2"]
+[ext_resource type="AudioStream" uid="uid://11fd62vsl4ll" path="res://sound/mixkit-bomb-distant-explotion-2772.wav" id="8_r088v"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_kdd8j")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[node name="score_title" type="Label" parent="."]
-offset_left = 728.0
-offset_top = -768.0
-offset_right = 900.0
-offset_bottom = -696.0
-theme_override_font_sizes/font_size = 50
-text = "SCORE:
-"
-
-[node name="score" type="Label" parent="."]
-offset_left = 909.0
-offset_top = -768.0
-offset_right = 949.0
-offset_bottom = -699.0
-theme_override_font_sizes/font_size = 50
 
 [node name="Boom" type="TextureButton" parent="."]
 offset_left = 768.0
@@ -73,6 +61,36 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_jmqbf")
 theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
+
+[node name="score_box" type="Node2D" parent="."]
+
+[node name="score_title" type="Label" parent="score_box"]
+offset_left = 728.0
+offset_top = -768.0
+offset_right = 900.0
+offset_bottom = -696.0
+theme_override_font_sizes/font_size = 50
+text = "SCORE:
+"
+
+[node name="score" type="Label" parent="score_box"]
+offset_left = 909.0
+offset_top = -768.0
+offset_right = 949.0
+offset_bottom = -699.0
+theme_override_font_sizes/font_size = 50
+
+[node name="win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_t5wbx")
+
+[node name="changeNumber" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_1vtfu")
+
+[node name="movePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_63ep2")
+
+[node name="shot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_r088v")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Boom" to="." method="_on_boom_pressed"]

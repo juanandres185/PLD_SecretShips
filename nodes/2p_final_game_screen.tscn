@@ -1,0 +1,238 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5lcyommehatx"]
+
+[ext_resource type="Texture2D" uid="uid://o3pcoiqx0g4l" path="res://sprites/FinishScreen/Madera.jpg" id="1_bk305"]
+[ext_resource type="Script" path="res://ResultsPatch.gd" id="2_s172i"]
+[ext_resource type="Texture2D" uid="uid://buo60q6qh5wky" path="res://sprites/FinishScreen/Partchment.png" id="3_5j83l"]
+[ext_resource type="AudioStream" uid="uid://qe7eu8kap3px" path="res://sound/Pirate Music Pack/Pirate 2.mp3" id="3_8ehhy"]
+[ext_resource type="Texture2D" uid="uid://bye4ng3tnv56a" path="res://sprites/FinishScreen/Treasure.png" id="4_u75lu"]
+[ext_resource type="FontFile" uid="uid://y5v6v3qadlop" path="res://fonts/BlackRose-2Onld.ttf" id="5_twuti"]
+
+[node name="2p_final_game_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bk305")
+
+[node name="ResultsPatch" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00922, 1)
+script = ExtResource("2_s172i")
+
+[node name="Music" type="AudioStreamPlayer" parent="ResultsPatch"]
+stream = ExtResource("3_8ehhy")
+
+[node name="Parchment" type="TextureRect" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_5j83l")
+expand_mode = 1
+
+[node name="Treasure" type="TextureRect" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 791.701
+offset_top = 409.0
+offset_right = -616.299
+offset_bottom = -223.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.479147, 0.471137)
+texture = ExtResource("4_u75lu")
+expand_mode = 1
+flip_h = true
+
+[node name="GameMode" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 190.246
+offset_top = 111.0
+offset_right = -833.754
+offset_bottom = -897.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_twuti")
+theme_override_font_sizes/font_size = 60
+text = "Modo de juego: "
+
+[node name="Puntuation1" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 182.319
+offset_top = 682.0
+offset_right = -905.681
+offset_bottom = -326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_twuti")
+theme_override_font_sizes/font_size = 60
+text = "Puntuación Final:"
+
+[node name="Code1" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 187.274
+offset_top = 785.0
+offset_right = -900.727
+offset_bottom = -223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_twuti")
+theme_override_font_sizes/font_size = 60
+text = "Código Final:"
+
+[node name="Result1" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.228
+offset_top = 442.0
+offset_right = -943.772
+offset_bottom = -426.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.652146, 0.810948)
+theme_override_colors/font_color = Color(0.666667, 0.427451, 0, 1)
+theme_override_fonts/font = ExtResource("5_twuti")
+theme_override_font_sizes/font_size = 200
+text = "VICTORIA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 621.272
+offset_top = 875.0
+offset_right = -744.728
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.298039, 0.298039, 0.298039, 1)
+theme_override_fonts/font = ExtResource("5_twuti")
+theme_override_font_sizes/font_size = 50
+text = "Volver al menu principal"
+flat = true
+
+[node name="Puntuation2" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1067.16
+offset_top = 679.0
+offset_right = -20.8381
+offset_bottom = -329.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_twuti")
+theme_override_font_sizes/font_size = 60
+text = "Puntuación Final:"
+
+[node name="Code2" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1074.1
+offset_top = 773.0
+offset_right = -13.9022
+offset_bottom = -235.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_twuti")
+theme_override_font_sizes/font_size = 60
+text = "Código Final:"
+
+[node name="Result2" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1096.89
+offset_top = 439.0
+offset_right = -39.1121
+offset_bottom = -429.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.652146, 0.810948)
+theme_override_colors/font_color = Color(0.666667, 0.427451, 0, 1)
+theme_override_fonts/font = ExtResource("5_twuti")
+theme_override_font_sizes/font_size = 200
+text = "VICTORIA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P1" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 274.47
+offset_top = 289.0
+offset_right = -170.531
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.39635, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_twuti")
+theme_override_font_sizes/font_size = 60
+text = "PIRATA 1"
+uppercase = true
+
+[node name="P2" type="Label" parent="ResultsPatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1190.03
+offset_top = 281.0
+offset_right = 745.029
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3923, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_twuti")
+theme_override_font_sizes/font_size = 60
+text = "PIRATA 2"
+uppercase = true
+
+[connection signal="pressed" from="ResultsPatch/Exit" to="ResultsPatch" method="_on_exit_pressed" flags=18]

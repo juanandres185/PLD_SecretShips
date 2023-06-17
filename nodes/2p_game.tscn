@@ -1,16 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnjheng7xw6u2"]
+[gd_scene load_steps=10 format=3 uid="uid://dnjheng7xw6u2"]
 
 [ext_resource type="PackedScene" uid="uid://b84t7ayu1w7vs" path="res://nodes/Player.tscn" id="1_fss41"]
 [ext_resource type="AudioStream" uid="uid://cj8ka6kaw6crs" path="res://sound/Pirate Music Pack/Pirate 8.mp3" id="2_jov7j"]
+[ext_resource type="Texture2D" uid="uid://cir1t4sablbap" path="res://sprites/Gameset/BackgroundSea.jpg" id="2_tds31"]
+[ext_resource type="Texture2D" uid="uid://r3a6jq5dyv2a" path="res://sprites/Gameset/PirateShip.png" id="3_kjbdp"]
+[ext_resource type="Texture2D" uid="uid://c3wlquhtwl2py" path="res://sprites/Gameset/Cannon.png" id="4_ll2qr"]
+[ext_resource type="Texture2D" uid="uid://d1u7yv05lmesk" path="res://sprites/Gameset/MainDeck.png" id="5_vt3yh"]
+[ext_resource type="Texture2D" uid="uid://i03vlsr33bj3" path="res://sprites/Gameset/Clipboard.png" id="6_2acr0"]
+[ext_resource type="FontFile" uid="uid://664eu3il4ttm" path="res://fonts/ChalkboardByMartaVanEck-gvpp.ttf" id="7_cpwsb"]
 
 [sub_resource type="GDScript" id="GDScript_cpfr4"]
 script/source = "extends Node2D
 
 var p1_finished
 var p2_finished
-
-var p1_score
-var p2_score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +26,9 @@ func _ready():
 	$Player1.numeroSecreto = Global.p1_number
 	$Player2.numeroSecreto = Global.p2_number
 	
+	$Player1.set_score_pos(-520,260)
+	$Player2.set_score_pos(-520,260)
+	
 	p1_finished = false
 	p2_finished = false
 
@@ -33,34 +39,301 @@ func _process(delta):
 		$Music.play()
 
 func _on_player_1_finish(score):
-	p1_score = score
-	p1_finished = true
+	if p1_finished == false:
+		Global.p1_score = score
+		p1_finished = true
 	if p1_finished and p2_finished:
 		finish()
 
 func _on_player_2_finish(score):
-	p2_score = score
-	p2_finished = true
+	if p2_finished == false:
+		Global.p2_score = score
+		p2_finished = true
 	if p1_finished and p2_finished:
 		finish()
 		
 func finish():
-	get_tree().change_scene_to_file(\"res://nodes/main_menu.tscn\")
+	get_tree().change_scene_to_file(\"res://nodes/2p_final_game_screen.tscn\")
 	
 "
 
 [node name="2p_game" type="Node2D"]
 script = SubResource("GDScript_cpfr4")
 
-[node name="Player1" parent="." instance=ExtResource("1_fss41")]
-position = Vector2(37, 14)
-
-[node name="Player2" parent="." instance=ExtResource("1_fss41")]
-position = Vector2(712, 6)
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_jov7j")
 autoplay = true
+
+[node name="Control1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -3.0
+offset_top = 502.0
+offset_right = 13.0
+offset_bottom = 518.0
+scale = Vector2(0.52, 0.520001)
+
+[node name="TextureRect" type="TextureRect" parent="Control1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.92308
+offset_top = -957.691
+offset_right = 1902.08
+offset_bottom = 106.309
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.92308, 2)
+texture = ExtResource("2_tds31")
+expand_mode = 1
+
+[node name="EnemyShip" type="Node2D" parent="Control1"]
+
+[node name="EnemyShip" type="Sprite2D" parent="Control1/EnemyShip"]
+position = Vector2(992.309, -376.923)
+scale = Vector2(1.89483, 1.3638)
+texture = ExtResource("3_kjbdp")
+
+[node name="MainShip" type="Node2D" parent="Control1"]
+position = Vector2(1.92308, -244.23)
+scale = Vector2(1, 1.23077)
+
+[node name="Cannons" type="Node2D" parent="Control1/MainShip"]
+position = Vector2(728.847, 704.688)
+scale = Vector2(0.82, 1.046)
+
+[node name="Cannon1" type="Sprite2D" parent="Control1/MainShip/Cannons"]
+position = Vector2(180, 180)
+texture = ExtResource("4_ll2qr")
+
+[node name="Cannon2" type="Sprite2D" parent="Control1/MainShip/Cannons"]
+position = Vector2(389, 180)
+texture = ExtResource("4_ll2qr")
+
+[node name="Cannon3" type="Sprite2D" parent="Control1/MainShip/Cannons"]
+position = Vector2(604, 180)
+texture = ExtResource("4_ll2qr")
+
+[node name="Cannon4" type="Sprite2D" parent="Control1/MainShip/Cannons"]
+position = Vector2(819, 180)
+texture = ExtResource("4_ll2qr")
+
+[node name="MainDeck" type="Sprite2D" parent="Control1/MainShip"]
+position = Vector2(1089.07, 876.424)
+rotation = -0.013437
+scale = Vector2(1.23922, 0.981596)
+texture = ExtResource("5_vt3yh")
+
+[node name="ScoreMarker" type="Node2D" parent="Control1/MainShip"]
+position = Vector2(7.69231, -53.1251)
+
+[node name="Clipboard" type="Sprite2D" parent="Control1/MainShip/ScoreMarker"]
+position = Vector2(273.483, 748.608)
+rotation = -0.0750641
+scale = Vector2(0.582971, 0.569846)
+texture = ExtResource("6_2acr0")
+
+[node name="Sunk" type="Label" parent="Control1/MainShip/ScoreMarker"]
+offset_left = 24.0
+offset_top = 464.0
+offset_right = 184.0
+offset_bottom = 520.0
+rotation = -0.08503
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_cpwsb")
+theme_override_font_sizes/font_size = 40
+text = "Hundidos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Touch" type="Label" parent="Control1/MainShip/ScoreMarker"]
+offset_left = 160.0
+offset_top = 456.0
+offset_right = 337.0
+offset_bottom = 512.0
+rotation = -0.0945344
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_cpwsb")
+theme_override_font_sizes/font_size = 40
+text = "Tocados"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Numbers" type="Label" parent="Control1/MainShip/ScoreMarker"]
+offset_left = -8.0
+offset_top = 520.0
+offset_right = 51.0
+offset_bottom = 1080.0
+rotation = -0.0805838
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_cpwsb")
+theme_override_font_sizes/font_size = 50
+text = "1
+2
+3
+4
+5
+6
+7
+8
+9
+10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shot" type="Label" parent="Control1/MainShip/ScoreMarker"]
+offset_left = 304.0
+offset_top = 440.0
+offset_right = 481.0
+offset_bottom = 496.0
+rotation = -0.0945344
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_cpwsb")
+theme_override_font_sizes/font_size = 40
+text = "Disparo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 949.0
+offset_top = 498.0
+offset_right = 965.0
+offset_bottom = 514.0
+scale = Vector2(0.52, 0.520001)
+
+[node name="TextureRect" type="TextureRect" parent="Control2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.92308
+offset_top = -957.691
+offset_right = 1902.08
+offset_bottom = 106.309
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 2)
+texture = ExtResource("2_tds31")
+expand_mode = 1
+
+[node name="EnemyShip" type="Node2D" parent="Control2"]
+
+[node name="EnemyShip" type="Sprite2D" parent="Control2/EnemyShip"]
+position = Vector2(992.309, -376.923)
+scale = Vector2(1.89483, 1.3638)
+texture = ExtResource("3_kjbdp")
+
+[node name="MainShip" type="Node2D" parent="Control2"]
+position = Vector2(1.92308, -244.23)
+scale = Vector2(1, 1.23077)
+
+[node name="Cannons" type="Node2D" parent="Control2/MainShip"]
+position = Vector2(728.847, 704.688)
+scale = Vector2(0.82, 1.046)
+
+[node name="Cannon1" type="Sprite2D" parent="Control2/MainShip/Cannons"]
+position = Vector2(180, 180)
+texture = ExtResource("4_ll2qr")
+
+[node name="Cannon2" type="Sprite2D" parent="Control2/MainShip/Cannons"]
+position = Vector2(389, 180)
+texture = ExtResource("4_ll2qr")
+
+[node name="Cannon3" type="Sprite2D" parent="Control2/MainShip/Cannons"]
+position = Vector2(604, 180)
+texture = ExtResource("4_ll2qr")
+
+[node name="Cannon4" type="Sprite2D" parent="Control2/MainShip/Cannons"]
+position = Vector2(819, 180)
+texture = ExtResource("4_ll2qr")
+
+[node name="MainDeck" type="Sprite2D" parent="Control2/MainShip"]
+position = Vector2(1089.07, 876.424)
+rotation = -0.013437
+scale = Vector2(1.23922, 0.981596)
+texture = ExtResource("5_vt3yh")
+
+[node name="ScoreMarker" type="Node2D" parent="Control2/MainShip"]
+position = Vector2(7.69231, -53.1251)
+
+[node name="Clipboard" type="Sprite2D" parent="Control2/MainShip/ScoreMarker"]
+position = Vector2(273.483, 748.608)
+rotation = -0.0750641
+scale = Vector2(0.582971, 0.569846)
+texture = ExtResource("6_2acr0")
+
+[node name="Sunk" type="Label" parent="Control2/MainShip/ScoreMarker"]
+offset_left = 24.0
+offset_top = 464.0
+offset_right = 184.0
+offset_bottom = 520.0
+rotation = -0.08503
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_cpwsb")
+theme_override_font_sizes/font_size = 40
+text = "Hundidos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Touch" type="Label" parent="Control2/MainShip/ScoreMarker"]
+offset_left = 160.0
+offset_top = 456.0
+offset_right = 337.0
+offset_bottom = 512.0
+rotation = -0.0945344
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_cpwsb")
+theme_override_font_sizes/font_size = 40
+text = "Tocados"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Numbers" type="Label" parent="Control2/MainShip/ScoreMarker"]
+offset_left = -8.0
+offset_top = 520.0
+offset_right = 51.0
+offset_bottom = 1080.0
+rotation = -0.0805838
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_cpwsb")
+theme_override_font_sizes/font_size = 50
+text = "1
+2
+3
+4
+5
+6
+7
+8
+9
+10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shot" type="Label" parent="Control2/MainShip/ScoreMarker"]
+offset_left = 304.0
+offset_top = 440.0
+offset_right = 481.0
+offset_bottom = 496.0
+rotation = -0.0945344
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_cpwsb")
+theme_override_font_sizes/font_size = 40
+text = "Disparo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1" parent="." instance=ExtResource("1_fss41")]
+position = Vector2(420, 870)
+scale = Vector2(0.53974, 0.64)
+
+[node name="Player2" parent="." instance=ExtResource("1_fss41")]
+position = Vector2(1372, 868)
+scale = Vector2(0.54, 0.64)
 
 [connection signal="finish" from="Player1" to="." method="_on_player_1_finish"]
 [connection signal="finish" from="Player2" to="." method="_on_player_2_finish"]

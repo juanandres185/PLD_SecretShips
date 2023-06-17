@@ -8,7 +8,8 @@ var mod = 10
 
 var win_system = 3
 
-var score = 0
+var p1_score = 0
+var p2_score = 0
 
 var config_path = "res://config.cfg"
 var config = ConfigFile.new()

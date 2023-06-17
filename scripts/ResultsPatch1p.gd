@@ -10,8 +10,8 @@ var playernumber
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	$Music.volume_db = Global.get_volume_dB(0)+10
-		
+	$Music.volume_db = Global.get_volume_dB(0)+10;
+	
 	gamemode = $GameMode
 	
 	match (Global.win_system):
@@ -22,32 +22,26 @@ func _ready():
 		3:
 			gamemode.text = "Modo de juego: Por puntuación"
 	
-
-	if(Global.p1_score < Global.p2_score):
-		$Result1.text = "DERROTA"
-	else:
-		$Result2.text = "DERROTA"
-		
-	if(Global.p1_score <= 0):
-		$Puntuation1.text = "Puntuación final: 0"
-	else:
-		$Puntuation1.text = "Puntuación final: "+str(Global.p1_score)		
+	puntuation = $Puntuation
 	
-	if(Global.p2_score <= 0):
-		$Puntuation1.text = "Puntuación final: 0"	
+	code = $Code
+	
+	if(Global.p1_score <= 0):
+		code.text = "El código secreto era: "
+		$Result1.text = "DERROTA"
+		puntuation.text = "Puntuación final: 0"
 	else:
-		$Puntuation2.text = "Puntuación final: "+str(Global.p2_score)
-		
-		
-	$Code1.text = "El código secreto era: "
+		puntuation.text = "Puntuación final: "+str(Global.p1_score)
+		code.text = "El código adivinado es: "
+	
 	for i in Global.p1_number:
-		$Code1.text += str(i)
-	$Code2.text = "El código secreto era: "
-	for i in Global.p2_number:
-		$Code2.text += str(i)
+		code.text += str(i)
+
+
 
 func _on_exit_pressed():
 	get_tree().change_scene_to_file("res://nodes/main_menu.tscn")
+	
 	
 func _process(delta):
 	if $Music.playing == false: $Music.play()

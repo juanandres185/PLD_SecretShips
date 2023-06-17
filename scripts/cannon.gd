@@ -15,8 +15,8 @@ func _ready():
 	
 
 func _on_digit_up_pressed():
-	Digit.text = str(player.up())
+	Digit.text = str(player.up(num))
 
 
 func _on_digit_down_pressed():
-	Digit.text = str(player.down())
+	Digit.text = str(player.down(num))

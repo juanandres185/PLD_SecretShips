@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckfc81j8flot2"]
+[gd_scene load_steps=7 format=3 uid="uid://tbu5ynlbn0ol"]
 
 [ext_resource type="Texture2D" uid="uid://o3pcoiqx0g4l" path="res://sprites/FinishScreen/Madera.jpg" id="1_wu6ii"]
-[ext_resource type="Script" path="res://ResultsPatch.gd" id="2_ckme4"]
+[ext_resource type="Script" path="res://scripts/ResultsPatch1p.gd" id="2_qg8v3"]
 [ext_resource type="Texture2D" uid="uid://buo60q6qh5wky" path="res://sprites/FinishScreen/Partchment.png" id="3_2wx8r"]
+[ext_resource type="AudioStream" uid="uid://qe7eu8kap3px" path="res://sound/Pirate Music Pack/Pirate 2.mp3" id="3_gim8p"]
 [ext_resource type="Texture2D" uid="uid://bye4ng3tnv56a" path="res://sprites/FinishScreen/Treasure.png" id="4_j4gsu"]
 [ext_resource type="FontFile" uid="uid://y5v6v3qadlop" path="res://fonts/BlackRose-2Onld.ttf" id="5_j68ni"]
 
@@ -30,7 +31,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_ckme4")
+script = ExtResource("2_qg8v3")
+
+[node name="Music" type="AudioStreamPlayer" parent="ResultsPatch"]
+stream = ExtResource("3_gim8p")
+autoplay = true
 
 [node name="Parchment" type="TextureRect" parent="ResultsPatch"]
 layout_mode = 1
