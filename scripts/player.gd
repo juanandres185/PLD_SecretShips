@@ -28,7 +28,7 @@ func _ready():
 	$win.volume_db = Global.get_volume_dB(1);
 	$changeNumber.volume_db = Global.get_volume_dB(1);
 	$movePlayer.volume_db = Global.get_volume_dB(1)-20;
-	$shot.volume_db = Global.get_volume_dB(1);
+	$shot.volume_db = Global.get_volume_dB(1)-20;
 	
 	if Global.win_system == 1:
 		score = 10000
@@ -148,9 +148,7 @@ func _input(event):
 			previous_digit()
 			
 		if event.keycode == tecla_boom:
-			_on_boom_pressed()
-			
-
+			_on_boom_pressed()			
 
 func _on_boom_pressed():
 	var ret = boom()

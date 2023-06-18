@@ -36,7 +36,7 @@ func _ready():
 	
 	
 	$Music.volume_db = Global.get_volume_dB(0)
-	$MoveMapSound.volume_db = Global.get_volume_dB(1)
+	$MoveMapSound.volume_db = Global.get_volume_dB(1)-10
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
