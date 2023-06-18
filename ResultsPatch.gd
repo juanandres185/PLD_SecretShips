@@ -46,6 +46,11 @@ func _ready():
 	for i in Global.p2_number:
 		$Code2.text += str(i)
 
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_SPACE or event.keycode == KEY_ENTER:
+			_on_exit_pressed()
+
 func _on_exit_pressed():
 	get_tree().change_scene_to_file("res://nodes/main_menu.tscn")
 	

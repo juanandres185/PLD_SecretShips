@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dgo8ei2vob6uq" path="res://sound/UI Soundpack/Minimalist13.wav" id="6_1vtfu"]
 [ext_resource type="FontFile" uid="uid://664eu3il4ttm" path="res://fonts/ChalkboardByMartaVanEck-gvpp.ttf" id="6_jmqbf"]
 [ext_resource type="AudioStream" uid="uid://tltx7nj3d2pr" path="res://sound/UI Soundpack/Wood Block2.wav" id="7_63ep2"]
-[ext_resource type="AudioStream" uid="uid://11fd62vsl4ll" path="res://sound/mixkit-bomb-distant-explotion-2772.wav" id="8_r088v"]
+[ext_resource type="AudioStream" uid="uid://ctayau67h80rx" path="res://sound/Cannon Sound Effect.mp3" id="8_d4w7g"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_kdd8j")
@@ -90,7 +90,7 @@ stream = ExtResource("6_1vtfu")
 stream = ExtResource("7_63ep2")
 
 [node name="shot" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_r088v")
+stream = ExtResource("8_d4w7g")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Boom" to="." method="_on_boom_pressed"]

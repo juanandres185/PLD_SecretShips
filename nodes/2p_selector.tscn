@@ -1,11 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwgxy7o3807r4"]
+[gd_scene load_steps=14 format=3 uid="uid://bwgxy7o3807r4"]
 
 [ext_resource type="PackedScene" uid="uid://cxs6d80olo5af" path="res://nodes/secret_number_selector.tscn" id="1_kwefy"]
+[ext_resource type="Texture2D" uid="uid://uxtiacho1567" path="res://sprites/SelectionScreen/Madera.jpg" id="1_qm7ls"]
 [ext_resource type="Texture2D" uid="uid://cgdrg4wmjp2ud" path="res://icon.svg" id="2_mttox"]
 [ext_resource type="AudioStream" uid="uid://b5nye5r14tqgk" path="res://sound/Pirate Music Pack/Pirate 6.mp3" id="3_4li6c"]
+[ext_resource type="Texture2D" uid="uid://br5t10gp55bsh" path="res://sprites/SelectionScreen/Partchment.png" id="3_ebgt4"]
+[ext_resource type="FontFile" uid="uid://y5v6v3qadlop" path="res://fonts/BlackRose-2Onld.ttf" id="6_2l4qi"]
+[ext_resource type="Texture2D" uid="uid://cl0ey0pkfgbvj" path="res://sprites/DigitSelector/wasd.png" id="7_ksqdg"]
+[ext_resource type="Texture2D" uid="uid://df5mu28267s3x" path="res://sprites/DigitSelector/Spacebar.png" id="8_356s5"]
+[ext_resource type="Texture2D" uid="uid://8ykim5ypa1rd" path="res://sprites/DigitSelector/enter.png" id="9_inebg"]
+[ext_resource type="Texture2D" uid="uid://3rnnl202hpdv" path="res://sprites/DigitSelector/arrows.png" id="10_7n2vf"]
+[ext_resource type="Texture2D" uid="uid://cham3mg5tgbk5" path="res://sprites/SelectionScreen/TreasureMap.png" id="11_r4dd5"]
+[ext_resource type="AudioStream" uid="uid://d033ys8du7xu5" path="res://sound/Book Page Turn Flip Sound Effect (mp3cut.net).mp3" id="12_3bgtx"]
 
 [sub_resource type="GDScript" id="GDScript_vljw6"]
-script/source = "extends Node2D
+script/source = "extends Control
 
 var p1_number
 var p2_number
@@ -22,8 +31,12 @@ func _ready():
 	
 	$p1_selector.visible = true
 	$p2_selector.visible = false
+	$CoverP1.visible = false
+	$CoverP2.visible = true
 	
-	$Music.volume_db = Global.get_volume_dB(0);
+	
+	$Music.volume_db = Global.get_volume_dB(0)
+	$MoveMapSound.volume_db = Global.get_volume_dB(1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,6 +55,10 @@ func ready():
 		p1_number = $p1_selector.numeroActual
 		$p1_selector.visible = false
 		$p2_selector.visible = true
+		$CoverP2.visible = false
+		$CoverP1.visible = true
+		$MoveMapSound.play()
+		
 	elif $p2_selector.visible:
 		p2_number = $p2_selector.numeroActual
 		start_game(p1_number, p2_number)
@@ -50,7 +67,6 @@ func ready():
 func start_game(p1_number, p2_number):
 	Global.p2_number = p1_number
 	Global.p1_number = p2_number
-
 	get_tree().change_scene_to_file(\"res://nodes/2p_game.tscn\")
 	
 
@@ -60,24 +76,128 @@ func _on_button_pressed():
 
 "
 
-[node name="2p_selector" type="Node2D"]
+[node name="2p_selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = SubResource("GDScript_vljw6")
 
-[node name="p1_selector" parent="." instance=ExtResource("1_kwefy")]
-
-[node name="p2_selector" parent="." instance=ExtResource("1_kwefy")]
-visible = false
-position = Vector2(561, 5)
-
 [node name="ready" type="Button" parent="."]
-offset_left = 417.0
-offset_top = 225.0
-offset_right = 473.0
-offset_bottom = 256.0
+layout_mode = 0
+offset_left = 1536.0
+offset_top = 640.0
+offset_right = 1672.0
+offset_bottom = 776.0
 icon = ExtResource("2_mttox")
+
+[node name="Table" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qm7ls")
+
+[node name="Parchement" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ebgt4")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_4li6c")
 volume_db = 24.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 120.0
+offset_right = 1129.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_2l4qi")
+theme_override_font_sizes/font_size = 80
+text = "J1 Escoge Tu código"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 576.0
+offset_right = 1129.0
+offset_bottom = 664.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_2l4qi")
+theme_override_font_sizes/font_size = 80
+text = "J2 Escoge Tu código"
+
+[node name="WASD" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1192.0
+offset_top = 256.0
+offset_right = 1368.0
+offset_bottom = 432.0
+texture = ExtResource("7_ksqdg")
+
+[node name="Spacebar" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1396.0
+offset_top = 352.0
+offset_right = 1642.0
+offset_bottom = 408.0
+texture = ExtResource("8_356s5")
+expand_mode = 1
+
+[node name="Enter" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1424.0
+offset_top = 736.0
+offset_right = 1488.0
+offset_bottom = 800.0
+scale = Vector2(2.5625, 2.5625)
+texture = ExtResource("9_inebg")
+
+[node name="Arrows" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1192.0
+offset_top = 752.0
+offset_right = 1444.0
+offset_bottom = 918.0
+scale = Vector2(0.789157, 0.789157)
+texture = ExtResource("10_7n2vf")
+
+[node name="p1_selector" parent="." instance=ExtResource("1_kwefy")]
+position = Vector2(448, 256)
+
+[node name="p2_selector" parent="." instance=ExtResource("1_kwefy")]
+position = Vector2(448, 704)
+
+[node name="CoverP1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -2.99997
+offset_top = -193.0
+offset_right = 1284.0
+offset_bottom = 590.0
+rotation = -0.0527696
+texture = ExtResource("11_r4dd5")
+
+[node name="CoverP2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 445.0
+offset_right = 1796.0
+offset_bottom = 1346.0
+rotation = 0.351923
+scale = Vector2(0.789157, 0.789157)
+texture = ExtResource("11_r4dd5")
+
+[node name="MoveMapSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_3bgtx")
 
 [connection signal="pressed" from="ready" to="." method="_on_button_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d033ys8du7xu5"
+path="res://.godot/imported/Book Page Turn Flip Sound Effect (mp3cut.net).mp3-288bb108cf9bfc5fdfc6e96edc642fde.mp3str"
+
+[deps]
+
+source_file="res://sound/Book Page Turn Flip Sound Effect (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Book Page Turn Flip Sound Effect (mp3cut.net).mp3-288bb108cf9bfc5fdfc6e96edc642fde.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
